@@ -1,0 +1,67 @@
+:root {
+  html,
+  body {
+    margin: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+  }
+
+  --primary-color: 0, 0, 0;
+  --secondary-color: 255, 255, 255;
+  --tertiary-color: 131, 130, 130;
+  --quaternary-color: 65, 171, 247;
+  --special-color: 51, 51, 51;
+
+  --background-1: 244, 246, 248;
+  --background-2: 245, 128, 42;
+  --background-3: 209, 215, 222;
+  --background-4: 255, 255, 255;
+
+  --shadow-1: 0 0 5px rgba(0, 0, 0, 0.05), 5px 5px 5px rgba(0, 0, 0, 0.1);
+
+  --border-color-1: 131, 130, 130;
+  --border-color-2: 209, 215, 222;
+  --border-color-3: 0, 0, 0;
+  --border-color-4: 224, 224, 224;
+
+  --dot-bg: black;
+  --dot-color: white;
+  --dot-size: 1px;
+  --dot-space: 22px;
+
+  --urgent: 237, 123, 136;
+  --high: 245, 165, 35;
+  --medium: 248, 230, 28;
+  --cool: 184, 233, 134;
+  --good: 155, 155, 155;
+
+  --ethic-personal: 74, 145, 226;
+  --ethic-work: 80, 227, 195;
+  --ethic-other: 245, 165, 35;
+
+  --grid-header-z-index: 1;
+  --filter-section: 100;
+}
+
+[theme="dark"] {
+  --primary-color: 255, 255, 255; /* White */
+  --secondary-color: 30, 30, 30; /* Dark gray */
+  --tertiary-color: 120, 120, 120; /* Medium gray */
+  --special-color: 242, 242, 242;
+
+  --background-1: 36, 35, 33;
+  --background-3: 64, 62, 62;
+  --background-4: 56, 53, 53;
+
+  --shadow-1: 0 0 5px rgba(255, 255, 255, 0.05),
+    5px 5px 5px rgba(255, 255, 255, 0.1); /* Inverted shadow */
+
+  --border-color-1: 120, 120, 120; /* Medium gray */
+  /* --border-color-2: 40, 45, 50;  */
+  --border-color-3: 255, 255, 255; /* White */
+  --border-color-4: 60, 60, 60; /* Darker gray */
+
+  --dot-bg: white; /* Inverted */
+  --dot-color: black; /* Inverted */
+}
