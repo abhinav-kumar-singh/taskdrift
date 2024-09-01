@@ -1,0 +1,23 @@
+.title {
+  font-weight: bold;
+}
+
+.user_info_accordion {
+  width: 300px;
+  background-color: rgb(var(--background-1));
+}
+
+.dashboard_config_accordion {
+  width: 100%;
+  background-color: rgb(var(--background-1));
+}
+
+.accordion_container {
+  display: flex;
+  gap: 10px;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}

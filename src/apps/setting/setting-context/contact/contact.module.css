@@ -1,0 +1,58 @@
+.contact_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(var(--background-3));
+  box-shadow: var(--shadow-1);
+  border-radius: 10px;
+}
+
+.contact {
+  width: 500px;
+  height: 500px;
+  background-color: rgb(var(--secondary-color));
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border: 1px solid rgb(var(--border-color-2));
+}
+
+.contact_heading {
+  color: rgb(var(--primary-color));
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.contact_subheading {
+  color: rgb(var(--tertiary-color));
+  font-size: 12px;
+}
+
+.contact_form_field_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name_container {
+  display: flex;
+  gap: 10px;
+}
+
+.first_name {
+  width: 50%;
+}
+
+.last_name {
+  width: 50%;
+}
+
+.submit_button {
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: var(--shadow-1);
+}

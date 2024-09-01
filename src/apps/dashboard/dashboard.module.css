@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left_container {
+  width: 250px;
+  padding-right: 10px;
+  background-color: rgb(var(--background-1));
+}
+
+.profile_section {
+  margin-top: 40px;
+  height: 50px;
+}
+
+.main_menu {
+  margin-top: 20px;
+}
+
+.right_container {
+  width: 100%;
+  margin-left: 10px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(var(--background-4));
+}
+
+.top_header {
+  height: 50px;
+}
+
+.expand_icon {
+  position: absolute;
+  top: 50px;
+  left: 233px;
+  border-radius: 50%;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+.mid_section {
+  transition: opacity 0.2s linear;
+}
+
+.hide {
+  max-height: 0;
+  opacity: 0;
+  z-index: 0;
+}
+
+.open {
+  opacity: 1;
+  max-height: 99999px;
+  z-index: 10;
+}
+
+.dashboard_profile {
+  height: 70px;
+}
+
+.dashboard_info {
+  height: 130px;
+  margin-top: 12px;
+}
+
+.filter_section {
+  height: 50px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  z-index: rgb(var(--filter-section));
+}
+
+.grid_section {
+  height: 100%;
+  overflow: auto;
+  z-index: 100;
+  background: linear-gradient(
+        90deg,
+        var(--dot-color) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--dot-color) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-bg);
+}

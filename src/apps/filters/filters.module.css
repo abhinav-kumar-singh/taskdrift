@@ -1,0 +1,48 @@
+.filter_container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(var(--border-color-1));
+  align-items: center;
+  z-index: 10;
+  position: relative;
+}
+
+.view_container {
+  font-size: 16px;
+  color: rgb(var(--tertiary-color));
+  display: flex;
+  align-items: center;
+}
+
+.view {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &:hover {
+    background-color: rgb(var(--background-1));
+    color: rgb(var(--primary-color));
+  }
+  cursor: pointer;
+}
+
+.add_task {
+  display: flex;
+}
+
+.active {
+  color: rgb(var(--primary-color));
+  border-bottom: 3px solid rgb(var(--border-color-3));
+}
+
+.expand_contract_icon {
+  padding: 14px;
+  cursor: pointer;
+}
+
+.search {
+  margin-right: 20px !important;
+  width: 150px;
+}

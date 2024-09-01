@@ -4,7 +4,6 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 import { StorageKey } from "./common/component-lib/storage-manager/storage.types";
 
-
 i18n
   .use(HttpApi)
   .use(LanguageDetector)

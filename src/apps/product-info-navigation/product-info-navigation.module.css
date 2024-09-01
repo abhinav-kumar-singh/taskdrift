@@ -1,0 +1,44 @@
+.container {
+  border-top: 1px solid rgb(var(--border-color-2));
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 50px;
+}
+
+.product_name {
+  color: rgb(var(--primary-color));
+  font-size: 18px;
+  font-family: math;
+  font-weight: bolder;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.connect_links {
+  display: flex;
+  gap: 10px;
+}
+
+.link {
+  color: rgb(var(--tertiary-color));
+  cursor: pointer;
+  &:hover {
+    color: rgb(var(--primary-color));
+  }
+}
+
+.top_top {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-1);
+  background-color: rgb(0, 131, 148);
+  color: rgb(255, 255, 255);
+}

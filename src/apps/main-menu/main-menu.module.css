@@ -1,0 +1,26 @@
+.menu_container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu_item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 5px;
+  color: rgb(var(--tertiary-color));
+  &:hover {
+    background-color: rgb(var(--secondary-color));
+    color: rgb(var(--primary-color));
+  }
+}
+
+.selected_menu_item {
+  background-color: rgb(var(--secondary-color));
+  color: rgb(var(--primary-color));
+  box-shadow: var(--shadow-1);
+}

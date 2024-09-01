@@ -1,8 +1,8 @@
-// import dayjs from "dayjs";
-// import {
-//   IDashboardConfig,
-//   IDashboardStore,
-// } from "../../store/dashboard/dash-board.type";
+import dayjs from "dayjs";
+import {
+  IDashboardConfig,
+  IDashboardStore,
+} from "../../store/dashboard/dash-board.type";
 
 export const safeParseJson = <T>(stringifiedJSON: string): T | null => {
   try {
@@ -47,25 +47,25 @@ export const getRandomLightColor = () => {
   return color;
 };
 
-// export const getSelectedDashboardConfig = (
-//   dashBoardDetails: IDashboardStore
-// ): IDashboardConfig => {
-//   const selectedDashBoardId = dashBoardDetails?.selectedDashBoardId;
-//   const selectedDashBoard = dashBoardDetails?.dashBoardConfig?.find(
-//     (data) => data?.dashboardId === selectedDashBoardId
-//   );
-//   return (selectedDashBoard as IDashboardConfig) || {};
-// };
+export const getSelectedDashboardConfig = (
+  dashBoardDetails: IDashboardStore
+): IDashboardConfig => {
+  const selectedDashBoardId = dashBoardDetails?.selectedDashBoardId;
+  const selectedDashBoard = dashBoardDetails?.dashBoardConfig?.find(
+    (data) => data?.dashboardId === selectedDashBoardId
+  );
+  return (selectedDashBoard as IDashboardConfig) || {};
+};
 
-// export const getFormattedEstimatedDate = (
-//   originalEstimate: dayjs.Dayjs | null
-// ) => {
-//   const formattedEstimate = dayjs(originalEstimate).format("MMMM D, YYYY");
-//   const today = dayjs(new Date()).format("MMMM D, YYYY");
+export const getFormattedEstimatedDate = (
+  originalEstimate: dayjs.Dayjs | null
+) => {
+  const formattedEstimate = dayjs(originalEstimate).format("MMMM D, YYYY");
+  const today = dayjs(new Date()).format("MMMM D, YYYY");
 
-//   if (formattedEstimate === today) return "Today";
-//   if (formattedEstimate === dayjs().add(1, "day").format("MMMM D, YYYY"))
-//     return "Tomorrow";
+  if (formattedEstimate === today) return "Today";
+  if (formattedEstimate === dayjs().add(1, "day").format("MMMM D, YYYY"))
+    return "Tomorrow";
 
-//   return formattedEstimate;
-// };
+  return formattedEstimate;
+};
