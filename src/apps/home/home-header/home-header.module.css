@@ -1,0 +1,14 @@
+.container {
+  color: rgb(var(--tertiary-color));
+  font-family: fantasy, Courier, monospace;
+  padding: 15px;
+}
+
+.date {
+  font-size: 18px;
+}
+
+.greeting {
+  margin-top: 10px;
+  font-size: 22px;
+}

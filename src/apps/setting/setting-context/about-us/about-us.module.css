@@ -1,0 +1,46 @@
+.container {
+  color: rgb(var(--primary-color));
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome_message {
+  font-family: sans-serif, math;
+  color: rgb(var(--special-color));
+  text-align: justify;
+  font-weight: 550;
+  font-size: 18px;
+}
+
+.image {
+  height: 500px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.connection_message {
+  font-family: sans-serif, math;
+  color: rgb(var(--tertiary-color));
+  font-size: 16px;
+  text-align: center;
+  font-weight: normal;
+  margin-top: 20px;
+}
+
+.connect_links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.link {
+  color: rgb(var(--tertiary-color));
+  cursor: pointer;
+  &:hover {
+    color: rgb(var(--primary-color));
+  }
+}

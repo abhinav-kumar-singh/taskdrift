@@ -1,0 +1,225 @@
+.todo_container {
+  width: 230px;
+  margin: 10px;
+}
+
+.todo_box {
+  min-height: 150px;
+  max-height: 200px;
+  width: 228px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--border-color-2));
+  border-radius: 5px;
+  background-color: rgb(var(--secondary-color));
+}
+
+.header_container {
+  display: flex;
+  position: sticky;
+  top: 0px;
+  background-color: rgb(var(--background-1));
+  z-index: var(--grid-header-z-index);
+}
+
+.title {
+  font-weight: 400;
+  color: rgb(var(--primary-color));
+}
+
+.title_container {
+  width: 280px;
+  height: 30px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(var(--secondary-color));
+  justify-content: space-between;
+  padding: 0px 15px;
+  border-radius: 5px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  width: 130px;
+  justify-content: space-between;
+}
+
+.counter {
+  background-color: rgb(var(--background-3));
+  padding: 2px 7px;
+  border-radius: 2px;
+  color: rgb(var(--primary-color));
+}
+
+.tag_color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.tags {
+  width: fit-content;
+  height: 20px;
+  padding: 5px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  color: rgb(var(--primary-color));
+}
+
+.tag_label {
+  white-space: nowrap !important ;
+  max-width: 65px;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tag_container {
+  padding: 15px 10px 8px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tag_list {
+  display: flex;
+  align-items: center;
+}
+
+.todo_header {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 208px;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 20px;
+  color: rgb(var(--primary-color));
+}
+
+.todo_description {
+  color: rgb(var(--tertiary-color));
+  font-size: 13px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 0px 10px 10px 10px;
+}
+
+.assigned_to {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(var(--primary-color));
+  color: rgb(var(--secondary-color));
+}
+
+.bottom_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  color: rgb(var(--tertiary-color));
+  font-size: 13px;
+}
+
+.grid_container {
+  display: flex;
+}
+
+.task_list {
+  width: 254px;
+  height: 100vh;
+}
+
+.list_view_header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.list_view_header_info_container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.list_view_header_name {
+  width: 100px;
+  font-weight: bold;
+}
+
+.list_column_header {
+  color: rgb(var(--tertiary-color));
+}
+
+.list_column_icon {
+  position: relative;
+  right: 5px;
+  top: 5px;
+}
+
+.list_action {
+  display: flex;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(var(--border-color-4));
+  border-right: none;
+}
+
+.list_cell {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(var(--primary-color));
+}
+
+.cell_container {
+  display: flex;
+  align-items: center;
+}
+
+.cell {
+  padding: 5px 10px;
+  width: fit-content;
+  color: rgb(var(--primary-color));
+}
+
+.cell_tag {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}
+
+.type_cell {
+  white-space: nowrap;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.other_cell {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete_action_summary {
+  width: 300px;
+  color: rgb(var(--tertiary-color));
+}
+
+.delete_action_task_name {
+  color: rgb(var(--primary-color));
+  padding: 0px 5px;
+}

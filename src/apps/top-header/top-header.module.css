@@ -1,0 +1,99 @@
+.header_container {
+  width: 100%;
+  height: 50px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: var(--shadow-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: rgb(var(--tertiary-color));
+}
+
+.title {
+  font-size: 16px;
+  padding-bottom: 3px;
+  display: flex;
+  align-items: center;
+  color: rgb(var(--primary-color));
+}
+
+.dashboard_config_name {
+  color: rgb(var(--tertiary-color));
+  padding-right: 7px;
+}
+
+.dashBoard_name {
+  font-weight: bold;
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+}
+
+.label {
+  color: rgb(var(--primary-color));
+  padding: 5px 10px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.edit_icon {
+  margin-left: 10px;
+  color: rgb(var(--tertiary-color));
+
+  &:hover {
+    color: rgb(var(--primary-color));
+    cursor: pointer;
+  }
+}
+
+.add_button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.delete_Button {
+  font-weight: bold;
+}
+
+.edit_comp {
+  position: relative;
+  bottom: 5px !important;
+  color: rgb(var(--primary-color));
+}
+
+.edit_action {
+  display: flex;
+  align-items: center;
+}
+
+.edit_action_icon {
+  cursor: pointer;
+}
+
+.delete_action_summary {
+  width: 300px;
+  color: rgb(var(--tertiary-color));
+}
+
+.delete_action_task_name {
+  color: rgb(var(--primary-color));
+  padding: 0px 5px;
+}

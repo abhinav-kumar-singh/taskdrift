@@ -1,0 +1,20 @@
+.button_container {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: end;
+  gap: 20px;
+}
+
+.user_description {
+  font-size: 10px;
+  color: rgb(var(--tertiary-color));
+}
+
+.first_row_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
