@@ -45,9 +45,10 @@ const Createdashboard = ({
   const [priorityTags, setPriorityTags] = useState<IDropdownOption[]>([]);
   const [contextTags, setContextTags] = useState<IDropdownOption[]>([]);
   const [dueDate, setDueDate] = useState<Dayjs | null>(dayjs());
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState(false);
 
-  const [loc, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
 
   const { setDashBoardConfig } = useDashboardStore();
 

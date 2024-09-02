@@ -2,7 +2,6 @@ import React from "react";
 import { ITasks } from "../../../store/tasks/task.type";
 import styles from "../grid.module.css";
 import { Divider } from "@mui/material";
-import dayjs from "dayjs";
 import GridAction from "../grid-action";
 import {
   PRIORITY_COLOR,
@@ -16,10 +15,6 @@ interface IGridViewTaskRenderer {
 
 const GridViewTaskRenderer = (props: IGridViewTaskRenderer): JSX.Element => {
   const { taskConfig } = props;
-
-  const formattedEstimate = dayjs(taskConfig?.originalEstimate).format(
-    "MMMM D, YYYY"
-  );
 
   return (
     <div className={styles.todo_container}>

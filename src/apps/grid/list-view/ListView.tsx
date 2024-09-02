@@ -76,6 +76,7 @@ const ListView = (): JSX.Element => {
       setTaskRecordsConfig(newObj);
     };
     categoryTasks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tasks?.length]);
 
   return (

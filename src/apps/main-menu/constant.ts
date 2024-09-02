@@ -1,4 +1,3 @@
-import SearchIcon from "@mui/icons-material/Search";
 import FoundationIcon from "@mui/icons-material/Foundation";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";

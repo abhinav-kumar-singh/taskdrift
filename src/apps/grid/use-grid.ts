@@ -57,6 +57,7 @@ const useGrid = () => {
     };
 
     categoryTasks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tasks?.length]);
 
   return {
