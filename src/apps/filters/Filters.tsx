@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./filters.module.css";
 import { VIEW } from "./constant";
-import { useDashboardStore } from "../../store";
+import { useDashboardStore, useTaskStore } from "../../store";
 import {
   DashBoardViewType,
   IDashboardStore,
@@ -16,6 +16,9 @@ import { setDashBoardMidSectionVisibility } from "../../store/dashboard/dash-boa
 import TextFieldComp from "../../common/component-lib/text-field";
 import ButtonField from "../../common/component-lib/button-field";
 import { useTranslation } from "react-i18next";
+import Dropdown from "../../common/component-lib/dropdown/Dropdown";
+import { SelectChangeEvent } from "@mui/material";
+import { MODE } from "../add-new-task/add-new-task.types";
 
 const Filters = (): JSX.Element => {
   const { t } = useTranslation();
@@ -32,6 +35,30 @@ const Filters = (): JSX.Element => {
 
   const [openAddNewTaskModal, setOpenAddNewTaskModal] = useState(false);
 
+  const { taskStoreConfig, setAssignedToFilter } = useTaskStore();
+
+  const currentDashBoardWithTasks = taskStoreConfig?.find((task) => {
+    return task?.dashBoardId === selectedDashBoardId;
+  });
+
+  const userSelected = currentDashBoardWithTasks?.assignedToFilter;
+
+  let index = 0;
+
+  const userMap = new Map();
+
+  currentDashBoardWithTasks?.tasks?.forEach((item) => {
+    if (!userMap.has(item.assignedTo)) {
+      userMap.set(item.assignedTo, {
+        title: item.assignedTo,
+        value: item.assignedTo,
+        index: index++,
+      });
+    }
+  });
+
+  const userList = Array.from(userMap.values());
+
   const handleViewChange = (view: DashBoardViewType) => {
     setDashBoardView(selectedDashBoardId, view);
   };
@@ -42,6 +69,11 @@ const Filters = (): JSX.Element => {
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParameter(event.target.value);
+  };
+
+  const handleUserNameFilter = (data: SelectChangeEvent<string | string[]>) => {
+    setAssignedToFilter(selectedDashBoardId, data?.target?.value as string);
+    console.log(data.target.value);
   };
 
   return (
@@ -73,18 +105,39 @@ const Filters = (): JSX.Element => {
         </div>
 
         <div className={styles.add_task}>
+          <Dropdown
+            label="Assigned To"
+            showLabel
+            value={userSelected || ""}
+            onChange={handleUserNameFilter}
+            dropDownOption={userList || []}
+            customStyle={{
+              margin: "0px 15px 0px 0px",
+            }}
+          />
+
           <div className={styles.search}>
             <TextFieldComp
               label="Search"
               value={searchParameter}
               onChange={handleSearch}
+              customStyle={{
+                width: "250px",
+              }}
             />
           </div>
           <ButtonField
             variant="contained"
             startIcon={<AddIcon />}
-            text={t("Add New Task")}
+            text={
+              <div
+                className={styles.add_new_task_button_text}
+                title={t("Add New Task")}>
+                {t("Add New Task")}
+              </div>
+            }
             onClick={() => setOpenAddNewTaskModal(true)}
+            customClass={styles.add_new_task}
           />
         </div>
       </div>
@@ -92,6 +145,7 @@ const Filters = (): JSX.Element => {
         <AddNewTask
           openAddNewTaskModal={openAddNewTaskModal}
           setOpenAddNewTaskModal={setOpenAddNewTaskModal}
+          mode={MODE.ADD}
         />
       ) : null}
     </>

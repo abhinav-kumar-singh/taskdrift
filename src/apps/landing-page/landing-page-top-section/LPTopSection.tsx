@@ -51,7 +51,7 @@ const LPTopSection = (): JSX.Element => {
   return (
     <>
       <div className={styles.top_section_container}>
-        <div className={styles.company_logo}>Advanced Task Manager</div>
+        <div className={styles.company_logo}>Task Drift</div>
         <div className={styles.header_option_container}>
           {HEADER_OPTION_LIST.map((option) => {
             return (

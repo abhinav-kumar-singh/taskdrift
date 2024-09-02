@@ -31,10 +31,7 @@
   z-index: 1;
   top: 0px;
   width: 100%;
-}
-
-.custom_border {
-  border-bottom: 1px solid rgb(var(--border-color-1));
+  background-color: rgb(var(--background-1));
 }
 
 .middle_section {

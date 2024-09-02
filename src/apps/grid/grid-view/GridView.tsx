@@ -7,6 +7,9 @@ import { getTaskCounter } from ".././utils";
 import GridViewTaskRenderer from "../task-renderer-grid-view";
 import useGrid from "../use-grid";
 import { useTranslation } from "react-i18next";
+import { MODE } from "../../add-new-task/add-new-task.types";
+import { IDropdownOption } from "../../../common/types/common.types";
+import { ITasks, TaskStatus, TaskType } from "../../../store/tasks/task.type";
 
 const GridView = (): JSX.Element => {
   const [openAddNewTaskModal, setOpenAddNewTaskModal] = useState(false);
@@ -22,6 +25,28 @@ const GridView = (): JSX.Element => {
   } = useGrid();
 
   const { t } = useTranslation();
+
+  const [taskObject, setTaskObject] = useState<ITasks>();
+  const [fieldsToDisable, setFieldsToDisable] = useState<string[]>([]);
+
+  const handleAddSpecificTask = (data: IDropdownOption) => {
+    let taskObj: ITasks = {
+      type: "" as TaskType,
+      id: "",
+      title: "",
+      status: data.value as TaskStatus,
+      summary: "",
+      priority: [],
+      description: "",
+      labels: [""],
+      createdDate: "",
+      originalEstimate: null,
+      assignedTo: "",
+    };
+    setTaskObject(taskObj);
+    setFieldsToDisable(["status"]);
+    setOpenAddNewTaskModal(true);
+  };
 
   return (
     <div className={styles.container}>
@@ -40,16 +65,18 @@ const GridView = (): JSX.Element => {
                     {getTaskCounter(tasks, status.value)}
                   </div>
                 </div>
-                <AddIcon
-                  sx={{
-                    color: "rgb(var(--tertiary-color))",
-                    cursor: "pointer",
-                    "&:hover": {
-                      backgroundColor: "rgb(var(--background-3))",
-                      borderRadius: "5px",
-                    },
-                  }}
-                />
+                <div onClick={() => handleAddSpecificTask(status)}>
+                  <AddIcon
+                    sx={{
+                      color: "rgb(var(--tertiary-color))",
+                      cursor: "pointer",
+                      "&:hover": {
+                        backgroundColor: "rgb(var(--background-3))",
+                        borderRadius: "5px",
+                      },
+                    }}
+                  />
+                </div>
               </div>
             );
           })}
@@ -87,6 +114,9 @@ const GridView = (): JSX.Element => {
         <AddNewTask
           openAddNewTaskModal={openAddNewTaskModal}
           setOpenAddNewTaskModal={setOpenAddNewTaskModal}
+          mode={MODE.ADD}
+          selectedTask={taskObject}
+          disableFields={fieldsToDisable}
         />
       ) : null}
     </div>

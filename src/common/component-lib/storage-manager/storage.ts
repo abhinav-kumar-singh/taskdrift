@@ -29,3 +29,13 @@ export const getItem = <T>(key: StorageKey): T | null => {
 
   return null;
 };
+
+export const removeItem = (key: StorageKey): boolean => {
+  try {
+    localStorage.removeItem(key);
+    return true;
+  } catch (ex) {
+    console.error(ex);
+    return false;
+  }
+};

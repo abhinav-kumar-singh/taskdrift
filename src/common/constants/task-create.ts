@@ -4,22 +4,27 @@ const TASK_STATUS = [
   {
     title: "To Do",
     value: TaskStatus.TODO,
+    index: 0,
   },
   {
     title: "On Progress",
     value: TaskStatus.PROGRESS,
+    index: 1,
   },
   {
     title: "In Review",
     value: TaskStatus.IN_REVIEW,
+    index: 2,
   },
   {
     title: "Done",
     value: TaskStatus.DONE,
+    index: 3,
   },
   {
     title: "Backlog",
     value: TaskStatus.BACKLOG,
+    index: 4,
   },
 ];
 
@@ -27,34 +32,42 @@ const TASK_TYPES = [
   {
     title: "Independent Bug",
     value: TaskType.INDEPENDENT_BUG,
+    index: 0,
   },
   {
     title: "Epic",
     value: TaskType.EPIC,
+    index: 1,
   },
   {
     title: "Story",
     value: TaskType.STORY,
+    index: 2,
   },
   {
     title: "Security Bug",
     value: TaskType.SECURITY_BUG,
+    index: 3,
   },
   {
     title: "AD-HOCK",
     value: TaskType.AD_HOC,
+    index: 4,
   },
   {
     title: "Support",
     value: TaskType.SUPPORT,
+    index: 5,
   },
   {
     title: "Performance Improvement",
     value: TaskType.PERFORMANCE_IMPROVEMENT,
+    index: 6,
   },
   {
     title: "Analysis Task",
     value: TaskType.ANALYSIS_TASK,
+    index: 7,
   },
 ];
 

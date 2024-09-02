@@ -1,6 +1,7 @@
 .todo_container {
   width: 230px;
   margin: 10px;
+  cursor: pointer;
 }
 
 .todo_box {

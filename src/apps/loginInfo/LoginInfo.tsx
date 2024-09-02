@@ -8,8 +8,9 @@ import {
 } from "../../store";
 import styles from "./login.module.css";
 import { handleNextClickedSuccess } from "../welcome/utils";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import TextFieldComp from "../../common/component-lib/text-field";
+import { useTranslation } from "react-i18next";
+import ButtonField from "../../common/component-lib/button-field";
 
 interface ILoginInfo {
   setUserDataSaved: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,6 +19,8 @@ interface ILoginInfo {
 const LoginInfo = (props: ILoginInfo) => {
   const { setUserDataSaved } = props;
   const { userName, email, mobile } = useUserDataStore();
+
+  const { t } = useTranslation();
 
   const [showError, setShowError] = useState(false);
 
@@ -55,7 +58,7 @@ const LoginInfo = (props: ILoginInfo) => {
     <>
       <div className={styles.login_info_container}>
         <TextFieldComp
-          label="Enter your name"
+          label={t("Enter your name")}
           value={userName}
           onChange={handleUserName}
           customStyle={{
@@ -66,7 +69,7 @@ const LoginInfo = (props: ILoginInfo) => {
         />
 
         <TextFieldComp
-          label="Enter your email"
+          label={t("Enter your email")}
           value={email}
           onChange={handleUserEmail}
           customStyle={{
@@ -78,7 +81,7 @@ const LoginInfo = (props: ILoginInfo) => {
         />
 
         <TextFieldComp
-          label="Enter your mobile number"
+          label={t("Enter your mobile number")}
           value={mobile}
           onChange={handleUserMobile}
           customStyle={{
@@ -88,25 +91,13 @@ const LoginInfo = (props: ILoginInfo) => {
       </div>
 
       <div className={styles.next_button}>
-        <Button
+        <ButtonField
           variant="outlined"
-          sx={{
-            margin: "13px 20px",
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "rgb(var(--secondary-color))",
-            color: "rgb(var(--primary-color))",
-            "&:hover": {
-              backgroundColor: "rgb(var(--primary-color))",
-              color: "rgb(var(--secondary-color))",
-            },
-          }}
-          disabled={isMoveToNextEnabled()}
-          endIcon={<NavigateNextIcon />}
-          size="large"
-          onClick={handleNext}>
-          Next
-        </Button>
+          isDisabled={isMoveToNextEnabled()}
+          text={t("Next")}
+          onClick={handleNext}
+          customClass={styles.next_button_style}
+        />
       </div>
     </>
   );

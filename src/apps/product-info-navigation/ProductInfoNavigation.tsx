@@ -24,7 +24,7 @@ const ProductInfoNavigation = (): JSX.Element => {
           id="back-to-top">
           <NavigationIcon />
         </div>
-        <div>Advanced Task Manager</div>
+        <div>Task Drift</div>
       </div>
       <div className={styles.connect_links}>
         <div className={styles.link}>

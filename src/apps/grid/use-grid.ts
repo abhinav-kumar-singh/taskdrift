@@ -13,6 +13,10 @@ const useGrid = () => {
     taskStoreConfig.find((data) => data.dashBoardId === selectedDashBoardId)
       ?.tasks || [];
 
+  const assignedToFilter =
+    taskStoreConfig?.find((data) => data.dashBoardId === selectedDashBoardId)
+      ?.assignedToFilter || "";
+
   const [toDoTasks, setToDoTasks] = useState<ITasks[]>([]);
   const [progressTasks, setProgressTasks] = useState<ITasks[]>([]);
   const [inReviewTasks, setInReviewTasks] = useState<ITasks[]>([]);
@@ -29,21 +33,61 @@ const useGrid = () => {
 
       tasks?.forEach((task) => {
         switch (task?.status) {
-          case TaskStatus.TODO:
-            newToDoTasks.push(task);
+          case TaskStatus.TODO: {
+            if (!assignedToFilter) {
+              newToDoTasks.push(task);
+            } else if (
+              assignedToFilter &&
+              task?.assignedTo === assignedToFilter
+            ) {
+              newToDoTasks.push(task);
+            }
             break;
-          case TaskStatus.PROGRESS:
-            newProgressTasks.push(task);
+          }
+          case TaskStatus.PROGRESS: {
+            if (!assignedToFilter) {
+              newProgressTasks.push(task);
+            } else if (
+              assignedToFilter &&
+              task?.assignedTo === assignedToFilter
+            ) {
+              newProgressTasks.push(task);
+            }
             break;
-          case TaskStatus.IN_REVIEW:
-            newInReviewTasks.push(task);
+          }
+          case TaskStatus.IN_REVIEW: {
+            if (!assignedToFilter) {
+              newInReviewTasks.push(task);
+            } else if (
+              assignedToFilter &&
+              task?.assignedTo === assignedToFilter
+            ) {
+              newInReviewTasks.push(task);
+            }
             break;
-          case TaskStatus.DONE:
-            newDoneTasks.push(task);
+          }
+          case TaskStatus.DONE: {
+            if (!assignedToFilter) {
+              newDoneTasks.push(task);
+            } else if (
+              assignedToFilter &&
+              task?.assignedTo === assignedToFilter
+            ) {
+              newDoneTasks.push(task);
+            }
             break;
-          case TaskStatus.BACKLOG:
-            newBacklogTasks.push(task);
+          }
+          case TaskStatus.BACKLOG: {
+            if (!assignedToFilter) {
+              newBacklogTasks.push(task);
+            } else if (
+              assignedToFilter &&
+              task?.assignedTo === assignedToFilter
+            ) {
+              newBacklogTasks.push(task);
+            }
             break;
+          }
           default:
             break;
         }
@@ -58,7 +102,7 @@ const useGrid = () => {
 
     categoryTasks();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tasks?.length]);
+  }, [tasks?.length, assignedToFilter]);
 
   return {
     toDoTasks,
