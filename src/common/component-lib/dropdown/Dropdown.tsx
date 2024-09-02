@@ -1,106 +1,88 @@
 import {
-  Autocomplete,
-  Checkbox,
-  TextField,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
 } from "@mui/material";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import { SyntheticEvent } from "react";
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
+import { IDropdownOption } from "../../types/common.types";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 interface IDropdown {
   isMultiDropdown?: boolean;
-  dropDownOption: {
-    title: string;
-    value: string;
-  }[];
-  onChange: (
-    event: SyntheticEvent<Element, Event>,
-    value:
-      | {
-          title: string;
-          value: string;
-        }
-      | {
-          title: string;
-          value: string;
-        }[]
-      | null
-  ) => void;
-  label: string;
+  value: string | string[];
+  onChange: (data: SelectChangeEvent<string | string[]>) => void;
+  dropDownOption: IDropdownOption[];
   customStyle?: React.CSSProperties;
-  required?: boolean;
-  shortOptions?: boolean;
+  label?: string;
+  showLabel?: boolean;
+  isDisabled?: boolean;
 }
 
 const Dropdown = (props: IDropdown): JSX.Element => {
   const {
     isMultiDropdown,
-    dropDownOption,
+    value,
     onChange,
+    dropDownOption,
     customStyle,
     label,
-    required,
-    shortOptions,
+    showLabel,
+    isDisabled,
   } = props;
   return (
-    <Autocomplete
-      multiple={isMultiDropdown}
-      id="checkboxes-tags"
-      options={
-        shortOptions
-          ? dropDownOption?.sort((a, b) => (a.title > b.title ? 1 : -1))
-          : dropDownOption
-      }
-      disableCloseOnSelect
-      getOptionLabel={(option) => option.title}
-      renderOption={(props, option, { selected }) => {
-        const { key, ...optionProps } = props;
-        return (
-          <li key={key} {...optionProps}>
-            <Checkbox
-              icon={icon}
-              checkedIcon={checkedIcon}
-              style={{ marginRight: 8 }}
-              checked={selected}
-            />
-            {option.title}
-          </li>
-        );
+    <FormControl
+      sx={{
+        minWidth: 200,
+        maxWidth: 200,
+
+        svg: {
+          color: "rgb(var(--primary-color))",
+        },
+        margin: "12px 0 25px 0px",
+        ...customStyle,
       }}
-      style={customStyle}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label={label}
-          placeholder="Tags"
-          variant="standard"
-          required={required}
-        />
-      )}
-      onChange={onChange}
-    />
-    // <FormControl sx={{ m: 1, width: 300 }}>
-    //   <InputLabel id="demo-multiple-name-label">{label}</InputLabel>
-    //   <Select
-    //     labelId="demo-multiple-name-label"
-    //     id="demo-multiple-name"
-    //     multiple={isMultiDropdown}
-    //     value={personName}
-    //     onChange={onChange}
-    //     input={<OutlinedInput label="Name" />}
-    //     MenuProps={MenuProps}>
-    //     {dropDownOption.map((option) => {
-    //       return (
-    //         <MenuItem key={option.value} value={option.value}>
-    //           {option.title}
-    //         </MenuItem>
-    //       );
-    //     })}
-    //   </Select>
-    // </FormControl>
+      size="small">
+      {showLabel ? (
+        <InputLabel id="multiple-name-label">{label}</InputLabel>
+      ) : null}
+      <Select
+        disabled={isDisabled}
+        labelId="multiple-name-label"
+        multiple={isMultiDropdown}
+        value={value}
+        onChange={onChange}
+        input={<OutlinedInput />}
+        inputProps={{ "aria-label": "Without label" }}
+        sx={{
+          backgroundColor: "rgb(var(--background-1))",
+          color: "rgb(var(--primary-color))",
+        }}
+        MenuProps={MenuProps}>
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        {dropDownOption.map((option) => {
+          return (
+            <MenuItem value={option.value} key={option.index}>
+              {option.title}
+            </MenuItem>
+          );
+        })}
+      </Select>
+    </FormControl>
   );
 };
 

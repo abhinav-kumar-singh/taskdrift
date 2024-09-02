@@ -20,7 +20,7 @@ const LanguageCustomization = ({
 }: {
   customClass?: string;
 }): JSX.Element => {
-  const {  i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const selectedUserLang = getItem(StorageKey.SELECTED_LANGUAGE) as Language;
 

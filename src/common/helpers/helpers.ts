@@ -59,7 +59,7 @@ export const getSelectedDashboardConfig = (
 
 export const getFormattedEstimatedDate = (
   originalEstimate: dayjs.Dayjs | null
-) => {
+): string => {
   const formattedEstimate = dayjs(originalEstimate).format("MMMM D, YYYY");
   const today = dayjs(new Date()).format("MMMM D, YYYY");
 

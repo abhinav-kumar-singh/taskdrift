@@ -15,7 +15,6 @@ const GridLayout = (): JSX.Element => {
     if (data?.dashboardId === selectedDashBoardId)
       return data?.dashBoardViewType;
   })?.dashBoardViewType;
-  console.log("🚀 ~ selectedView ~ selectedView:", selectedView);
 
   const renderGridLayout = (): JSX.Element => {
     switch (selectedView) {

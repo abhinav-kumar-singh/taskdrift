@@ -1,6 +1,7 @@
 import React, { SetStateAction } from "react";
 import Createdashboard from "../../create-dashboard/Createdashboard";
 import ModalField from "../../../common/component-lib/modal";
+import { useTranslation } from "react-i18next";
 
 interface ICreateDashboardFromHeader {
   handleCloseModal: (event: React.SyntheticEvent, reason: string) => void;
@@ -12,6 +13,8 @@ interface ICreateDashboardFromHeader {
 const CreateDashboardFromHeader = (
   props: ICreateDashboardFromHeader
 ): JSX.Element => {
+  const { t } = useTranslation();
+
   const {
     handleCloseModal,
     showDashboardCreateModel,
@@ -23,7 +26,7 @@ const CreateDashboardFromHeader = (
       handleCloseModal={handleCloseModal}
       showModal={showDashboardCreateModel}
       modalWidth="lg"
-      titleSummary="Create New Dashboard"
+      titleSummary={t("Create New Dashboard")}
       dialogContent={
         <Createdashboard
           onSuccess={handleSuccess}

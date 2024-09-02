@@ -18,7 +18,7 @@ import Setting from "../setting";
 
 const Dashboard = () => {
   const [loc, setLocation] = useLocation();
-  console.log("🚀 ~ Dashboard ~ loc:", loc);
+
   const dashBoardDetails = getItem(
     StorageKey.DASH_BOARD_DETAILS
   ) as IDashboardStore;
@@ -57,6 +57,7 @@ const Dashboard = () => {
       }
     }
   };
+
 
   return (
     <div className={styles.container}>

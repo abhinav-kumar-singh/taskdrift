@@ -1,8 +1,4 @@
-import { getItem } from "../../common/component-lib/storage-manager/storage";
-import { StorageKey } from "../../common/component-lib/storage-manager/storage.types";
-
 import styles from "./landing-page.module.css";
-import { useLocation } from "wouter";
 import LPTopSection from "./landing-page-top-section";
 import LPMiddleSection from "./landing-page-middle-section";
 import LPProductDescription from "./landing-page-product-description";
@@ -14,30 +10,12 @@ import { LANDING_PAGE_LINKS } from "../../common/constants/landing-page-links";
 import { HeaderOptions } from "./landing-page.types";
 
 const LandingPage = () => {
-  const [, setLocation] = useLocation();
-
-  const dashBoardDetails = getItem(StorageKey.DASH_BOARD_DETAILS);
-
-  if (dashBoardDetails) setLocation("/dashboard");
-
-  window.addEventListener("scroll", () => {
-    const element = document.getElementById("LDTopSection");
-    if (element) {
-      if (window.screenY > 10) {
-        element.classList.add(styles.custom_border);
-      } else {
-        element.classList.remove(styles.custom_border);
-      }
-    }
-  });
 
   return (
     <div
       className={styles.landing_page_container}
       id={LANDING_PAGE_LINKS.BACK_TO_TOP}>
-      <div
-        className={`${styles.top_section} ${styles.common_design}`}
-        id="LDTopSection">
+      <div className={`${styles.top_section}`} id="LDTopSection">
         <LPTopSection />
       </div>
       <div className={`${styles.middle_section} ${styles.common_design}`}>

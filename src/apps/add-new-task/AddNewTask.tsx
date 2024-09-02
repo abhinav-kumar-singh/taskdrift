@@ -1,14 +1,12 @@
-import { Button } from "@mui/material";
+import { Button, SelectChangeEvent } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
-import React, { SyntheticEvent, useState } from "react";
-import { IAddNewTask } from "./add-new-task.types";
+import React, { useState } from "react";
+import { IAddNewTask, ITaskObj, MODE } from "./add-new-task.types";
 import TextFieldComp from "../../common/component-lib/text-field";
-import Dropdown from "../../common/component-lib/dropdown";
 import { TASK_STATUS, TASK_TYPES } from "../../common/constants/task-create";
 import { USER_TIME_TAGS } from "../../common/constants/user-dashboard-creation";
 import DateTime from "../../common/component-lib/date-time-field";
 import styles from "./add-new-task.module.css";
-import { IDropdownOption } from "../../common/types/common.types";
 import { useDashboardStore } from "../../store";
 import { IDashboardStore } from "../../store/dashboard/dash-board.type";
 import { generateUniqueId } from "../../common/helpers/helpers";
@@ -18,25 +16,19 @@ import { setActivityLog } from "../../store";
 import { ActivityType } from "../../store/activity/activity-log.types";
 import ButtonField from "../../common/component-lib/button-field";
 import ModalField from "../../common/component-lib/modal";
-
-interface ITaskObj {
-  id: string;
-  title: string;
-  type: IDropdownOption[];
-  status: IDropdownOption[];
-  summary: string;
-  priority: IDropdownOption[];
-  description: string;
-  labels: string;
-  createdDate: string;
-  originalEstimate: Dayjs | null;
-  assignedTo: string;
-}
-
-
+import { useTranslation } from "react-i18next";
+import Dropdown from "../../common/component-lib/dropdown";
 
 const AddNewTask = (props: IAddNewTask): JSX.Element => {
-  const { openAddNewTaskModal, setOpenAddNewTaskModal } = props;
+  const {
+    openAddNewTaskModal,
+    setOpenAddNewTaskModal,
+    mode = MODE.ADD,
+    selectedTask,
+    disableFields,
+  } = props;
+
+  const { t } = useTranslation();
 
   const dashBoardDetails = useDashboardStore() as IDashboardStore;
   const selectedDashBoardId = dashBoardDetails?.selectedDashBoardId;
@@ -44,17 +36,17 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
   const { setTaskStoreConfig } = useTaskStore();
 
   const [taskObj, setTaskObj] = useState<ITaskObj>({
-    id: "",
-    title: "",
-    type: [],
-    status: [],
-    summary: "",
-    priority: [],
-    description: "",
-    labels: "",
+    id: selectedTask?.id || generateUniqueId(),
+    title: selectedTask?.title || "",
+    type: selectedTask?.type || "",
+    status: selectedTask?.status || "",
+    summary: selectedTask?.summary || "",
+    priority: selectedTask?.priority || [],
+    description: selectedTask?.description || "",
+    labels: selectedTask?.labels?.join(",") || "",
     createdDate: dayjs().toISOString(),
     originalEstimate: null,
-    assignedTo: "",
+    assignedTo: selectedTask?.assignedTo || "",
   });
 
   const handleCloseModal = (
@@ -72,6 +64,7 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
       title: event?.target?.value,
     }));
   };
+
   const handleAssignedTo = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTaskObj((prevTaskObj) => ({
       ...prevTaskObj,
@@ -79,73 +72,18 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
     }));
   };
 
-  const handleIssueType = (
-    event: SyntheticEvent<Element, Event>,
-    option:
-      | {
-          title: string;
-          value: string;
-        }
-      | {
-          title: string;
-          value: string;
-        }[]
-      | null
-  ) => {
-    if (!Array.isArray(option)) {
-      setTaskObj((prevTaskObj) => ({
-        ...prevTaskObj,
-        type: [
-          {
-            title: option?.title || "",
-            value: option?.value || "",
-          },
-        ],
-      }));
-    }
+  const handleIssueType = (data: SelectChangeEvent<string | string[]>) => {
+    setTaskObj((prevTaskObj) => ({
+      ...prevTaskObj,
+      type: data.target.value as string,
+    }));
   };
 
-  // const handleIssueType = (event: SelectChangeEvent<string>) => {
-  //   const {
-  //     target: { value },
-  //   } = event;
-  //   const filteredValue = TASK_TYPES.filter((item) => item.value === value);
-  //   setTaskObj((prevTaskObj) => ({
-  //     ...prevTaskObj,
-  //     type: [
-  //       {
-  //         title: filteredValue?.[0].title || "",
-  //         value: filteredValue?.[0].value || "",
-  //       },
-  //     ],
-  //   }));
-  //   console.log("🚀 ~ handleIssueType ~ target:", event);
-  // };
-
-  const handleIssueStatus = (
-    event: SyntheticEvent<Element, Event>,
-    option:
-      | {
-          title: string;
-          value: string;
-        }
-      | {
-          title: string;
-          value: string;
-        }[]
-      | null
-  ) => {
-    if (!Array.isArray(option)) {
-      setTaskObj((prevTaskObj) => ({
-        ...prevTaskObj,
-        status: [
-          {
-            title: option?.title || "",
-            value: option?.value || "",
-          },
-        ],
-      }));
-    }
+  const handleIssueStatus = (data: SelectChangeEvent<string | string[]>) => {
+    setTaskObj((prevTaskObj) => ({
+      ...prevTaskObj,
+      status: data.target.value as string,
+    }));
   };
 
   const handleSummary = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -155,30 +93,11 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
     }));
   };
 
-  const handleIssuePriority = (
-    event: SyntheticEvent<Element, Event>,
-    option:
-      | {
-          title: string;
-          value: string;
-        }
-      | {
-          title: string;
-          value: string;
-        }[]
-      | null
-  ) => {
-    if (!Array.isArray(option)) {
-      setTaskObj((prevTaskObj) => ({
-        ...prevTaskObj,
-        priority: [
-          {
-            title: option?.title || "",
-            value: option?.value || "",
-          },
-        ],
-      }));
-    }
+  const handleIssuePriority = (data: SelectChangeEvent<string | string[]>) => {
+    setTaskObj((prevTaskObj) => ({
+      ...prevTaskObj,
+      priority: data.target.value as string[],
+    }));
   };
 
   const handleDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -203,26 +122,25 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
   };
 
   const handleTaskCreate = (): void => {
-    const taskId = generateUniqueId();
     const formObject: ITasks = {
-      id: taskId,
+      id: taskObj.id,
       title: taskObj.title,
-      type: taskObj.type?.[0]?.value as TaskType,
-      status: taskObj.status?.[0]?.value as TaskStatus,
+      type: taskObj.type as TaskType,
+      status: taskObj.status as TaskStatus,
       summary: taskObj.summary,
-      priority: taskObj.priority?.map((priority) => priority.value),
+      priority: taskObj.priority,
       description: taskObj.description,
       labels: taskObj.labels?.split(","),
       createdDate: taskObj.createdDate,
       originalEstimate: taskObj.originalEstimate,
       assignedTo: taskObj.assignedTo,
     };
-    setTaskStoreConfig(formObject, selectedDashBoardId);
+    setTaskStoreConfig(formObject, selectedDashBoardId, mode);
 
     setActivityLog(selectedDashBoardId, {
       logTime: taskObj.createdDate,
       activityType: ActivityType.CREATE,
-      relatedTaskId: taskId,
+      relatedTaskId: taskObj.id,
       logId: generateUniqueId(),
     });
 
@@ -244,22 +162,32 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
     return false;
   };
 
+  const getTitleSummary = (): string => {
+    switch (mode) {
+      case MODE.ADD:
+        return t("Add New Task");
+      case MODE.EDIT:
+        return t("Edit Task");
+      case MODE.REVIEW:
+        return t("Review Task");
+    }
+  };
+
   return (
     <ModalField
       handleCloseModal={handleCloseModal}
       showModal={openAddNewTaskModal}
-      // modalWidth="lg"
       fullWidth
       handleCrossIcon={() => setOpenAddNewTaskModal(false)}
-      titleSummary="Create Issue"
+      titleSummary={getTitleSummary()}
       dialogContent={
         <>
           <div className={styles.user_description}>
-            Required fields are marked with an asterisk *
+            {t("Required fields are marked with an asterisk *")}
           </div>
           <div className={styles.first_row_container}>
             <TextFieldComp
-              label="Project Name"
+              label={t("Project Name")}
               onChange={handleProjectName}
               customStyle={{
                 width: "50%",
@@ -268,7 +196,7 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
               value={taskObj?.title || ""}
             />
             <TextFieldComp
-              label="Assigned To"
+              label={t("Assigned To")}
               onChange={handleAssignedTo}
               customStyle={{
                 width: "50%",
@@ -277,117 +205,107 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
               value={taskObj?.assignedTo || ""}
             />
           </div>
-          <Dropdown
-            isMultiDropdown={false}
-            dropDownOption={TASK_TYPES}
-            onChange={handleIssueType}
-            customStyle={{
-              width: "30%",
-              marginBottom: "20px",
-            }}
-            label="Issue Type"
-            required
-            shortOptions
-          />
-          {/* <FormControl
-            sx={{
-              width: "50%",
-              svg: {
-                color: "rgb(var(--primary-color))",
-              },
-              marginTop: "15px",
-              div: {
-                height: "38px",
-              },
-            }}>
-            <Select
-              // displayEmpty
-              renderValue={(selected) => selected}
-              placeholder="Issue Type"
-              // multiple
-              value={taskObj?.type?.[0]?.title}
+
+          <div className={styles.dropdown_container}>
+            <div className={styles.dropdown_label}>{t("Task Type")}</div>
+
+            <Dropdown
+              value={taskObj?.type}
               onChange={handleIssueType}
-              input={<OutlinedInput />}
-              // MenuProps={MenuProps}
-              // inputProps={{ "aria-label": "Without label" }}
-              sx={{
-                backgroundColor: "rgb(var(--background-1))",
-                color: "rgb(var(--primary-color))",
-              }}>
-              {TASK_TYPES?.map((type) => {
-                return (
-                  <MenuItem value={type.value} key={type.value}>
-                    {type.title}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl> */}
-          <Dropdown
-            isMultiDropdown={false}
-            dropDownOption={TASK_STATUS}
-            onChange={handleIssueStatus}
-            customStyle={{
-              width: "30%",
-              marginTop: "15px",
-              marginBottom: "20px",
-            }}
-            label="Issue Status"
-            required
-          />
+              dropDownOption={TASK_TYPES}
+              customStyle={{
+                margin: "0",
+                minWidth: "270px",
+                maxWidth: "270px",
+              }}
+              isDisabled={disableFields?.includes("type")}
+            />
+          </div>
+
+          <div className={styles.dropdown_container}>
+            <div className={styles.dropdown_label}>{t("Task Status")}</div>
+            <Dropdown
+              value={taskObj?.status}
+              onChange={handleIssueStatus}
+              dropDownOption={TASK_STATUS}
+              customStyle={{
+                margin: "0",
+                minWidth: "270px",
+                maxWidth: "270px",
+              }}
+              isDisabled={disableFields?.includes("status")}
+            />
+          </div>
+
+          <div className={styles.dropdown_container}>
+            <div className={styles.dropdown_label}>{t("Task Priority")}</div>
+            <Dropdown
+              value={taskObj?.priority}
+              onChange={handleIssuePriority}
+              dropDownOption={USER_TIME_TAGS}
+              customStyle={{
+                margin: "0",
+                minWidth: "270px",
+                maxWidth: "270px",
+              }}
+              isDisabled={disableFields?.includes("priority")}
+            />
+          </div>
+
           <TextFieldComp
-            label="Summary"
+            label={t("Summary")}
             onChange={handleSummary}
-            customStyle={{ width: "100%", marginBottom: "20px" }}
+            customStyle={{
+              width: "100%",
+              marginBottom: "20px",
+              marginTop: "20px",
+            }}
             required
             value={taskObj?.summary || ""}
           />
-          <Dropdown
-            isMultiDropdown={false}
-            dropDownOption={USER_TIME_TAGS}
-            onChange={handleIssuePriority}
-            customStyle={{
-              width: "30%",
-              marginBottom: "20px",
-            }}
-            label="Priority"
-            required
-          />
+
           <TextFieldComp
-            label="Description"
+            label={t("Description")}
             onChange={handleDescription}
             customStyle={{ width: "100%", marginBottom: "20px" }}
             multiline
             rows={4}
             value={taskObj?.description || ""}
           />
-          <DateTime
-            label="Original Estimate"
-            value={taskObj?.originalEstimate}
-            onChange={handleEstimate}
-          />
-          <div>
-            <TextFieldComp
-              label="label"
-              onChange={handleLabel}
-              customStyle={{ width: "100%" }}
-              value={taskObj?.labels || ""}
+
+          <div className={styles.dropdown_container}>
+            <DateTime
+              label={t("Original Estimate")}
+              value={taskObj?.originalEstimate}
+              onChange={handleEstimate}
             />
-            <div className={styles.user_description}>
-              Enter comma separated label
+            <div>
+              <TextFieldComp
+                label={t("label")}
+                onChange={handleLabel}
+                customStyle={{ width: "300px" }}
+                value={taskObj?.labels || ""}
+              />
+              <div className={styles.user_description}>
+                {t("Enter comma separated label")}
+              </div>
             </div>
           </div>
-          <div className={styles.button_container}>
-            <Button onClick={() => setOpenAddNewTaskModal(false)}>
-              Cancel
-            </Button>
-            <ButtonField
-              variant="contained"
-              onClick={handleTaskCreate}
-              isDisabled={isButtonDisabled()}
-              text="Create"
-            />
-          </div>
+
+          {mode === MODE.REVIEW ? null : (
+            <div className={styles.button_container}>
+              <Button onClick={() => setOpenAddNewTaskModal(false)}>
+                {t("Cancel")}
+              </Button>
+              <ButtonField
+                variant="contained"
+                onClick={handleTaskCreate}
+                isDisabled={isButtonDisabled()}
+                text={mode === MODE.EDIT ? t("Update") : t("Create")}
+                customClass={styles.button}
+              />
+            </div>
+          )}
         </>
       }
     />

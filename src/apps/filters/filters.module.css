@@ -44,5 +44,24 @@
 
 .search {
   margin-right: 20px !important;
-  width: 150px;
+  width: 250px;
+}
+
+.search_field {
+  width: 250px !important;
+}
+
+.add_new_task {
+  width: 165px !important;
+}
+
+.add_new_task_button_text {
+  white-space: nowrap;
+  width: 108px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user_dropdown {
+  margin: 0px !important;
 }

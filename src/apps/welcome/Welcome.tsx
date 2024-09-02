@@ -12,17 +12,20 @@ import {
 } from "@mui/material";
 import styles from "./welcome.module.css";
 import ModalField from "../../common/component-lib/modal";
-import { setItem } from "../../common/component-lib/storage-manager/storage";
+import { removeItem } from "../../common/component-lib/storage-manager/storage";
 import { StorageKey } from "../../common/component-lib/storage-manager/storage.types";
+import { useTranslation } from "react-i18next";
 
 export default function CustomizedDialogs() {
   const [open, setOpen] = React.useState(true);
+
+  const { t } = useTranslation();
 
   const [userDataSaved, setUserDataSaved] = useState(false);
 
   const handleClose = (): void => {
     setOpen(false);
-    setItem(StorageKey.USER_VIEWED_LANDING_PAGE, false);
+    removeItem(StorageKey.USER_VIEWED_LANDING_PAGE);
   };
   const handleCloseModal = (
     event: React.SyntheticEvent,
@@ -39,7 +42,7 @@ export default function CustomizedDialogs() {
       showModal={open}
       modalWidth="lg"
       fullWidth
-      titleSummary="Getting Started"
+      titleSummary={t("Getting Started")}
       handleCrossIcon={handleClose}
       dialogContent={
         <>
@@ -51,7 +54,7 @@ export default function CustomizedDialogs() {
               marginTop: "10px",
               marginBottom: "10px",
             }}>
-            Welcome to Advanced Task Manager !
+            {t("Welcome to Task Drift!")}
           </Typography>
           <Typography
             gutterBottom
@@ -60,11 +63,11 @@ export default function CustomizedDialogs() {
               color: "rgb(var(--tertiary-color)",
               marginBottom: "20px",
             }}>
-            Let's start automating your tasks.
+            {t("Let's start automating your tasks.")}
             <span className={styles.title}>
-              Efficiently prioritizes, manages, and executes tasks with advanced
-              software proficiency, automation skills, and effective team
-              coordination.
+              {t(
+                "Efficiently prioritizes, manages, and executes tasks with advanced software proficiency, automation skills, and effective team coordination."
+              )}
             </span>
           </Typography>
           <Divider />
@@ -92,7 +95,7 @@ export default function CustomizedDialogs() {
                     },
                     width: "300px !important",
                   }}>
-                  <div>Information</div>
+                  <div>{t("Information")}</div>
                 </AccordionSummary>
                 <AccordionDetails>
                   <LoginInfo setUserDataSaved={setUserDataSaved} />
@@ -122,12 +125,12 @@ export default function CustomizedDialogs() {
                     },
                     width: "300px !important",
                   }}>
-                  <div>Dashboard Details</div>
+                  <div>{t("Dashboard Details")}</div>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Createdashboard
                     setUserDataSaved={setUserDataSaved}
-                    heading=" 'Create Your Very First Own Dashboard '"
+                    heading={t("Create Your Very First Own Dashboard")}
                     showPreviousButton
                     redirectAfterSuccess={true}
                     isFirstDashBoard
