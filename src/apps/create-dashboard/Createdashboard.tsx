@@ -62,7 +62,7 @@ const Createdashboard = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState(false);
 
-  const [loc, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
 
   const { t } = useTranslation();
 

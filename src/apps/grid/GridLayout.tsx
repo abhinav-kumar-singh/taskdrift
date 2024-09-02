@@ -10,6 +10,7 @@ import ListView from "./list-view";
 const GridLayout = (): JSX.Element => {
   const dashBoardDetails = useDashboardStore() as IDashboardStore;
   const selectedDashBoardId = dashBoardDetails?.selectedDashBoardId;
+  // eslint-disable-next-line array-callback-return
   const selectedView = dashBoardDetails?.dashBoardConfig?.find((data) => {
     if (data?.dashboardId === selectedDashBoardId)
       return data?.dashBoardViewType;

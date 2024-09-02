@@ -1,8 +1,4 @@
-import { getItem } from "../../common/component-lib/storage-manager/storage";
-import { StorageKey } from "../../common/component-lib/storage-manager/storage.types";
-
 import styles from "./landing-page.module.css";
-import { useLocation } from "wouter";
 import LPTopSection from "./landing-page-top-section";
 import LPMiddleSection from "./landing-page-middle-section";
 import LPProductDescription from "./landing-page-product-description";
@@ -14,11 +10,6 @@ import { LANDING_PAGE_LINKS } from "../../common/constants/landing-page-links";
 import { HeaderOptions } from "./landing-page.types";
 
 const LandingPage = () => {
-  // const [, setLocation] = useLocation();
-
-  // const dashBoardDetails = getItem(StorageKey.DASH_BOARD_DETAILS);
-
-  // if (dashBoardDetails) setLocation("/dashboard");
 
   return (
     <div
