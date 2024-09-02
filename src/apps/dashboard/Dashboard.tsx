@@ -25,6 +25,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!dashBoardDetails) setLocation("/");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderContent = (): JSX.Element => {

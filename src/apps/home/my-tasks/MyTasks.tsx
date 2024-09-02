@@ -24,6 +24,7 @@ const MyTasks = (): JSX.Element => {
       });
     });
     setTasksList(tasks);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userName = useUserDataStore()?.userName?.split(" ")[0];
