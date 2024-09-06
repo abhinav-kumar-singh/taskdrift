@@ -1,13 +1,14 @@
 import { Button, SelectChangeEvent } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IAddNewTask, ITaskObj, MODE } from "./add-new-task.types";
 import TextFieldComp from "../../common/component-lib/text-field";
 import { TASK_STATUS, TASK_TYPES } from "../../common/constants/task-create";
 import { USER_TIME_TAGS } from "../../common/constants/user-dashboard-creation";
 import DateTime from "../../common/component-lib/date-time-field";
 import styles from "./add-new-task.module.css";
-import { useDashboardStore } from "../../store";
+import { setNotification, useDashboardStore } from "../../store";
 import { IDashboardStore } from "../../store/dashboard/dash-board.type";
 import { generateUniqueId } from "../../common/helpers/helpers";
 import { ITasks, TaskStatus, TaskType } from "../../store/tasks/task.type";
@@ -16,8 +17,8 @@ import { setActivityLog } from "../../store";
 import { ActivityType } from "../../store/activity/activity-log.types";
 import ButtonField from "../../common/component-lib/button-field";
 import ModalField from "../../common/component-lib/modal";
-import { useTranslation } from "react-i18next";
 import Dropdown from "../../common/component-lib/dropdown";
+import { NotificationVariant } from "../../store/notification/notification.store";
 
 const AddNewTask = (props: IAddNewTask): JSX.Element => {
   const {
@@ -145,6 +146,13 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
     });
 
     setOpenAddNewTaskModal(false);
+    setNotification({
+      message:
+        mode === MODE.EDIT
+          ? "Task Updated Successfully"
+          : "Task Created Successfully",
+      variant: NotificationVariant.FILLED,
+    });
   };
 
   const isButtonDisabled = (): boolean => {

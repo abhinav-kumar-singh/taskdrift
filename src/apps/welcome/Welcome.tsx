@@ -12,34 +12,36 @@ import {
 } from "@mui/material";
 import styles from "./welcome.module.css";
 import ModalField from "../../common/component-lib/modal";
-import { removeItem } from "../../common/component-lib/storage-manager/storage";
-import { StorageKey } from "../../common/component-lib/storage-manager/storage.types";
 import { useTranslation } from "react-i18next";
 
-export default function CustomizedDialogs() {
-  const [open, setOpen] = React.useState(true);
+interface IWelcomeProps {
+  handleButtonClick: (showPage: boolean) => void;
+  showWelcomePage: boolean;
+}
+
+const Welcome = (props: IWelcomeProps): JSX.Element => {
+  const { handleButtonClick, showWelcomePage } = props;
 
   const { t } = useTranslation();
 
   const [userDataSaved, setUserDataSaved] = useState(false);
 
   const handleClose = (): void => {
-    setOpen(false);
-    removeItem(StorageKey.USER_VIEWED_LANDING_PAGE);
+    handleButtonClick(false);
   };
   const handleCloseModal = (
     event: React.SyntheticEvent,
     reason: string
   ): void => {
     if (reason !== "backdropClick") {
-      setOpen(false);
+      handleButtonClick(false);
     }
   };
 
   return (
     <ModalField
       handleCloseModal={handleCloseModal}
-      showModal={open}
+      showModal={showWelcomePage}
       modalWidth="lg"
       fullWidth
       titleSummary={t("Getting Started")}
@@ -143,4 +145,6 @@ export default function CustomizedDialogs() {
       }
     />
   );
-}
+};
+
+export default Welcome;

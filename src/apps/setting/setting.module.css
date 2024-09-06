@@ -104,6 +104,11 @@
   transition: transform 0.3s ease;
 }
 
+.fade_lower_priority_pricing_plan {
+  opacity: 0.4;
+  /* pointer-events: none; */
+}
+
 .pricing_plan_individual_list:hover {
   cursor: pointer;
   transform: scale(1.05);

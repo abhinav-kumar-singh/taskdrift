@@ -91,6 +91,26 @@ const USER_BOARD_TAGS = [
   },
 ];
 
+// const USER_BOARD_TAGS = [
+//   "Frontend",
+//   "Backend",
+//   "Fullstack",
+//   "Devops",
+//   "Design",
+//   "Marketing",
+//   "Product",
+//   "Management",
+//   "Sales",
+//   "Engineering",
+//   "HR",
+//   "Legal",
+//   "Finance",
+//   "Admin",
+//   "Operations",
+//   "Customer Success",
+//   "Other",
+// ];
+
 const USER_TIME_TAGS = [
   { title: "Urgent", value: "urgent", index: 0 },
   { title: "High", value: "high", index: 1 },

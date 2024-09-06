@@ -12,7 +12,7 @@ import {
 import { StorageKey } from "../../../../../../common/component-lib/storage-manager/storage.types";
 import { useTranslation } from "react-i18next";
 import styles from "../../personalizations.module.css";
-import { useSettingStore } from "../../../../../../store";
+import { setNotification, useSettingStore } from "../../../../../../store";
 
 const CustomizationPage = (): JSX.Element => {
   const { t, i18n } = useTranslation();
@@ -29,6 +29,9 @@ const CustomizationPage = (): JSX.Element => {
     i18n.changeLanguage(lang);
     setLang(lang as Language);
     setItem(StorageKey.SELECTED_LANGUAGE, lang as Language);
+    setNotification({
+      message: t("Language changed successfully"),
+    });
   };
 
   return (
@@ -77,7 +80,12 @@ const CustomizationPage = (): JSX.Element => {
         <Select
           displayEmpty
           value={selectedTheme}
-          onChange={(e) => setTheme(e.target.value as Theme)}
+          onChange={(e) => {
+            setTheme(e.target.value as Theme);
+            setNotification({
+              message: t("Theme changed successfully"),
+            });
+          }}
           input={<OutlinedInput />}
           inputProps={{ "aria-label": "Without label" }}
           sx={{

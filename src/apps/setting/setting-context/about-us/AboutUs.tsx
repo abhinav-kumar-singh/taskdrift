@@ -10,7 +10,7 @@ const AboutUs = (): JSX.Element => {
     <div className={style.container}>
       <div className={style.welcome_message}>
         <div>
-          Welcome to my Task Manager app, a personal project born out of a
+          Welcome to my Task Drift app, a personal project born out of a
           passion for productivity and efficient task management. As the sole
           developer behind this initiative, I am dedicated to creating a
           seamless and intuitive experience that helps you organize your tasks

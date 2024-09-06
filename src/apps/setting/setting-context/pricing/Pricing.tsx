@@ -5,6 +5,7 @@ import ButtonField from "../../../../common/component-lib/button-field/ButtonFie
 import VerifiedIcon from "@mui/icons-material/Verified";
 import {
   setMembershipType,
+  setNotification,
   setUserBoardLimit,
   setUserDayTaskLimit,
   setUserTasksLimit,
@@ -14,11 +15,14 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import { PricingBucket } from "../../../../store/setting/setting.type";
 import { useTranslation } from "react-i18next";
 import { USER_META_DATA } from "../../../../common/constants/user-info";
+import { NotificationVariant } from "../../../../store/notification/notification.store";
 
 const Pricing = (): JSX.Element => {
   const { t } = useTranslation();
   const { setPricing, settingConfig } = useSettingStore();
   const selectedPriceBucket = settingConfig?.pricing?.selectedPriceBucket;
+  const selectedPriceBucketPriority =
+    settingConfig?.pricing?.selectedPriceBucketPriority;
 
   return (
     <div>
@@ -34,7 +38,12 @@ const Pricing = (): JSX.Element => {
       <div className={styles.pricing_plan_list_container}>
         {PRICING_LIST?.map((item) => {
           return (
-            <div className={styles.pricing_plan_individual_list}>
+            <div
+              className={`${styles.pricing_plan_individual_list} ${
+                item.priority < selectedPriceBucketPriority
+                  ? styles.fade_lower_priority_pricing_plan
+                  : null
+              }`}>
               <div>
                 <div className={styles.banner_container}>
                   {item?.value === PricingBucket.PREMIUM ? (
@@ -61,7 +70,7 @@ const Pricing = (): JSX.Element => {
                   </div>
                 </div>
                 <div className={styles.button_container}>
-                  {selectedPriceBucket !== item?.value ? (
+                  {/* {selectedPriceBucket !== item?.value ? (
                     <ButtonField
                       text={
                         selectedPriceBucket === item?.value
@@ -70,7 +79,7 @@ const Pricing = (): JSX.Element => {
                       }
                       variant="contained"
                       onClick={() => {
-                        setPricing(item?.value);
+                        setPricing(item?.value, item.priority);
                         setMembershipType(item.value);
                         setUserBoardLimit(
                           USER_META_DATA[item.value].DashboardLimit
@@ -79,6 +88,46 @@ const Pricing = (): JSX.Element => {
                         setUserDayTaskLimit(
                           USER_META_DATA[item.value].TaskLimitPerDay
                         );
+                      }}
+                      isDisabled={selectedPriceBucket === item?.value}
+                    />
+                  ) : (
+                    <div className={styles.check_icon_container}>
+                      {selectedPriceBucket === item?.value ? (
+                        <TaskAltIcon
+                          sx={{ fontSize: "40px", color: item.colorAssociated }}
+                        />
+                      ) : null}
+                    </div>
+                  )} */}
+                  {item?.value === PricingBucket.FREE ? (
+                    <TaskAltIcon
+                      sx={{ fontSize: "40px", color: item.colorAssociated }}
+                    />
+                  ) : selectedPriceBucket !== item?.value ? (
+                    <ButtonField
+                      text={
+                        selectedPriceBucket === item?.value
+                          ? ""
+                          : t("Get Started, (monthly)")
+                      }
+                      variant="contained"
+                      onClick={() => {
+                        setPricing(item?.value, item.priority);
+                        setMembershipType(item.value);
+                        setUserBoardLimit(
+                          USER_META_DATA[item.value].DashboardLimit
+                        );
+                        setUserTasksLimit(USER_META_DATA[item.value].TaskLimit);
+                        setUserDayTaskLimit(
+                          USER_META_DATA[item.value].TaskLimitPerDay
+                        );
+                        setNotification({
+                          message: t(
+                            "Congratulations, you are now a prestige member!"
+                          ),
+                          variant: NotificationVariant.FILLED,
+                        });
                       }}
                       isDisabled={selectedPriceBucket === item?.value}
                     />

@@ -59,8 +59,7 @@ const Createdashboard = ({
   ]);
 
   const [dueDate, setDueDate] = useState<Dayjs | null>(dayjs());
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [error, setError] = useState(false);
+  const [, setError] = useState(false);
 
   const [, setLocation] = useLocation();
 

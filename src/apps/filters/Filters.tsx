@@ -73,7 +73,6 @@ const Filters = (): JSX.Element => {
 
   const handleUserNameFilter = (data: SelectChangeEvent<string | string[]>) => {
     setAssignedToFilter(selectedDashBoardId, data?.target?.value as string);
-    console.log(data.target.value);
   };
 
   return (

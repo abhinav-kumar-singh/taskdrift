@@ -5,6 +5,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import {
   setActivityLog,
+  setNotification,
   useDashboardStore,
   useTaskStore,
 } from "../../../store";
@@ -19,6 +20,11 @@ import ModalField from "../../../common/component-lib/modal";
 import AddNewTask from "../../add-new-task";
 import { MODE } from "../../add-new-task/add-new-task.types";
 import { ITasks } from "../../../store/tasks/task.type";
+import {
+  NotificationColor,
+  NotificationSeverity,
+  NotificationVariant,
+} from "../../../store/notification/notification.store";
 
 interface IGridAction {
   id: string;
@@ -70,6 +76,12 @@ const GridAction = (props: IGridAction): JSX.Element => {
     setTaskDelete(selectedDashBoardId, id);
     setShowDeleteModal(false);
     setAnchorEl(null);
+    setNotification({
+      message: "Task Deleted Successfully",
+      variant: NotificationVariant.STANDARD,
+      severity: NotificationSeverity.WARNING,
+      color: NotificationColor.SUCCESS,
+    });
   };
 
   const handleCloseModal = (

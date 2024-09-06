@@ -124,5 +124,7 @@
   "Cancel": "Cancelar",
   "Enter comma separated label": "Introduzca etiqueta separada por coma",
   "Go Back": "Volver",
-  "Update": "Actualizar"
+  "Update": "Actualizar",
+  "Language changed successfully": "Idioma cambiado correctamente",
+  "Theme changed successfully": "Tema cambiado correctamente"
 }

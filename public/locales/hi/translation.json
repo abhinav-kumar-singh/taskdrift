@@ -124,5 +124,7 @@
   "Cancel": "रद्द करें",
   "Enter comma separated label": "किसी भी लेबल के साथ दर्ज करें",
   "Go Back": "वापस जाएं",
-  "Update": "अपडेट करें"
+  "Update": "अपडेट करें",
+  "Language changed successfully": "भाषा सफलतापूर्वक बदला गया",
+  "Theme changed successfully": "थीम सफलतापूर्वक बदला गया"
 }

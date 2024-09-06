@@ -3,6 +3,7 @@ import "./app.module.css";
 import "./i18n";
 import { useSettingStore } from "./store";
 import { useEffect } from "react";
+import Notification from "./common/component-lib/notification";
 
 function App() {
   const { settingConfig } = useSettingStore();
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div>
+      <Notification />
       <Layout />
     </div>
   );

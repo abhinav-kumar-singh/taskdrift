@@ -124,5 +124,7 @@
   "Cancel": "Annuler",
   "Enter comma separated label": "Entrez des labels sepréparés par des virgules",
   "Go Back": "Retour",
-  "Update": "Mettre à jour"
+  "Update": "Mettre à jour",
+  "Language changed successfully": "Langue mise à jour avec succès",
+  "Theme changed successfully": "Theme mis à jour avec succès"
 }

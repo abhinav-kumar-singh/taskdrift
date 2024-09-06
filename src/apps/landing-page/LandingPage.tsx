@@ -10,13 +10,14 @@ import { LANDING_PAGE_LINKS } from "../../common/constants/landing-page-links";
 import { HeaderOptions } from "./landing-page.types";
 
 const LandingPage = () => {
-
   return (
     <div
       className={styles.landing_page_container}
       id={LANDING_PAGE_LINKS.BACK_TO_TOP}>
       <div className={`${styles.top_section}`} id="LDTopSection">
-        <LPTopSection />
+        <div className={styles.top_section_child}>
+          <LPTopSection />
+        </div>
       </div>
       <div className={`${styles.middle_section} ${styles.common_design}`}>
         <LPMiddleSection />
