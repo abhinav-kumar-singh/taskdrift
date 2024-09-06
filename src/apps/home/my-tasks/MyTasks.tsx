@@ -12,7 +12,6 @@ const MyTasks = (): JSX.Element => {
   const allDashboardsTasks = allTasks?.taskStoreConfig;
 
   const [tasksList, setTasksList] = useState<ITasks[]>([]);
-  console.log("🚀 ~ MyTasks ~ tasksList:", tasksList);
 
   useEffect(() => {
     const tasks: ITasks[] = [];
@@ -28,7 +27,6 @@ const MyTasks = (): JSX.Element => {
   }, []);
 
   const userName = useUserDataStore()?.userName?.split(" ")[0];
-  console.log("🚀 ~ MyTasks ~ userName:", userName);
 
   return (
     <div className={styles.my_tasks_container}>

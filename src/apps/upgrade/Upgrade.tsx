@@ -13,7 +13,7 @@ import { IDashboardStore } from "../../store/dashboard/dash-board.type";
 import ButtonField from "../../common/component-lib/button-field";
 import { useLocation } from "wouter";
 import { APP_ROUTES } from "../../common/constants/app-routes";
-import { SETTINGS } from "../../store/setting/setting.type";
+import { PricingBucket, SETTINGS } from "../../store/setting/setting.type";
 import { useTranslation } from "react-i18next";
 
 const Upgrade = (): JSX.Element => {
@@ -29,6 +29,9 @@ const Upgrade = (): JSX.Element => {
 
   const dashBoardDetails = useDashboardStore() as IDashboardStore;
 
+  const { settingConfig } = useSettingStore();
+  const selectedPriceBucket = settingConfig?.pricing?.selectedPriceBucket;
+
   const handleUpgrade = () => {
     setSelectedSettingOption({
       title: "Pricing",
@@ -40,7 +43,7 @@ const Upgrade = (): JSX.Element => {
 
   return (
     <>
-      {showComp ? (
+      {selectedPriceBucket === PricingBucket.FREE && showComp ? (
         <div className={styles.update_container}>
           <div className={styles.header_container}>
             <div className={styles.header}>

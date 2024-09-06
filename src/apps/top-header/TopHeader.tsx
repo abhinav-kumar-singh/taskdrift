@@ -6,7 +6,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import styles from "./top-header.module.css";
-import { useDashboardStore } from "../../store";
+import {
+  setNotification,
+  useDashboardStore,
+  useSettingStore,
+} from "../../store";
 import { IDashboardStore } from "../../store/dashboard/dash-board.type";
 import { getSelectedDashboardConfig } from "../../common/helpers/helpers";
 import { useEffect, useState } from "react";
@@ -16,10 +20,21 @@ import ButtonField from "../../common/component-lib/button-field";
 import CreateDashboardFromHeader from "./create-dashboard-from-header";
 import DeleteDashboard from "./delete-dashboard/DeleteDashboard";
 import { useTranslation } from "react-i18next";
+import {
+  NotificationColor,
+  NotificationPositionHorizontal,
+  NotificationPositionVertical,
+  NotificationSeverity,
+  NotificationVariant,
+} from "../../store/notification/notification.store";
+import { PriceProductLimit } from "../setting/utils";
 
 const TopHeader = (): JSX.Element => {
   const { t } = useTranslation();
   const dashBoardDetails = useDashboardStore() as IDashboardStore;
+
+  const { settingConfig } = useSettingStore();
+  const selectedPriceBucket = settingConfig?.pricing?.selectedPriceBucket;
 
   const selectedDashBoard = getSelectedDashboardConfig(dashBoardDetails);
   const [showEditComponent, setShowEditComponent] = useState(false);
@@ -49,6 +64,23 @@ const TopHeader = (): JSX.Element => {
 
   const handleSuccess = (): void => {
     setShowDashboardCreateModel(false);
+  };
+
+  const handleCreateNewDashboard = (): void => {
+    if (
+      dashBoardDetails?.dashBoardConfig?.length ===
+      PriceProductLimit[selectedPriceBucket].DashboardLimit
+    ) {
+      setNotification({
+        message:
+          "You have reached the limit to create new dashboard, Please upgrade your plan",
+        severity: NotificationSeverity.ERROR,
+        variant: NotificationVariant.FILLED,
+        color: NotificationColor.ERROR,
+        horizontalPosition: NotificationPositionHorizontal.CENTER,
+        verticalPosition: NotificationPositionVertical.TOP,
+      });
+    } else setShowDashboardCreateModel(true);
   };
 
   return (
@@ -90,6 +122,10 @@ const TopHeader = (): JSX.Element => {
                   boardName
                 );
                 setShowEditComponent(false);
+                setNotification({
+                  message: "Dashboard name updated successfully",
+                  variant: NotificationVariant.FILLED,
+                });
               }}
               className={styles.edit_action_icon}>
               <CheckCircleIcon
@@ -121,7 +157,7 @@ const TopHeader = (): JSX.Element => {
           variant="contained"
           startIcon={<AddIcon />}
           text={t("New Dashboard")}
-          onClick={() => setShowDashboardCreateModel(true)}
+          onClick={handleCreateNewDashboard}
         />
         <StarBorderIcon
           sx={{

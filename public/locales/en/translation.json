@@ -124,5 +124,7 @@
   "Cancel": "Cancel",
   "Enter comma separated label": "Enter comma separated label",
   "Go Back": "Go Back",
-  "Update": "Update"
+  "Update": "Update",
+  "Language changed successfully": "Language changed successfully",
+  "Theme changed successfully": "Theme changed successfully"
 }

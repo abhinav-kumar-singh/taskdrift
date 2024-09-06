@@ -4,12 +4,12 @@ import { PRODUCT_DESCRIPTION_LIST } from "../utils";
 import { IListItem } from "../landing-page.types";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import project from "../../../assets/PROJECT.png";
-import timeTracking from "../../../assets/TIME_TRACKING.png";
-import personalization from "../../../assets/PERSONALIZATION.png";
-import analytics from "../../../assets/ANALYTICS.png";
-import activityLog from "../../../assets/ACTIVITY_LOG.png";
-import dashboard from "../../../assets/DASHBOARD.png";
+import project from "../../../assets/PROJECT.webp";
+import timeTracking from "../../../assets/TIME_TRACKING.webp";
+import personalization from "../../../assets/PERSONALIZATION.webp";
+import analytics from "../../../assets/ANALYTICS.webp";
+import activityLog from "../../../assets/ACTIVITY_LOG.webp";
+import dashboard from "../../../assets/DASHBOARD.webp";
 import { useTranslation } from "react-i18next";
 
 const LPProductDescription = (): JSX.Element => {

@@ -124,5 +124,7 @@
   "Cancel": "Abbrechen",
   "Enter comma separated label": "Geben Sie Komma getrennte Label ein",
   "Go Back": "Zuru",
-  "Update": "Aktualisieren"
+  "Update": "Aktualisieren",
+  "Language changed successfully": "Sprache erfolgreich geändert",
+  "Theme changed successfully": "Thema erfolgreich geändert"
 }

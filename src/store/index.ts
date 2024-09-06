@@ -27,6 +27,12 @@ import { useTaskStore, setTaskDelete } from "./tasks";
 
 import { useSettingStore } from "./setting";
 
+import {
+  setNotification,
+  useNotificationStore,
+  closeNotification,
+} from "./notification";
+
 export {
   setUserName,
   useTaskStore,
@@ -37,14 +43,17 @@ export {
   useActivityLog,
   setActivityLog,
   setUserDetails,
+  setNotification,
   useSettingStore,
   useUserDataStore,
   setDashBoardView,
+  closeNotification,
+  setUserTasksLimit,
   setUserBoardLimit,
   setMembershipType,
   useDashboardStore,
-  setUserTasksLimit,
   setUserDayTaskLimit,
+  useNotificationStore,
   setIsDefaultDashboard,
   setSelectedDartboardId,
   setActivityLogFilteredData,

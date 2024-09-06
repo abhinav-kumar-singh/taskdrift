@@ -27,6 +27,8 @@ const initialState = {
       ...userSettings?.pricing,
       selectedPriceBucket:
         userSettings?.pricing?.selectedPriceBucket || PricingBucket.FREE,
+      selectedPriceBucketPriority:
+        userSettings?.pricing?.selectedPriceBucketPriority || 1, // denote free
     },
     personalizations: {
       ...userSettings?.personalizations,
@@ -38,9 +40,10 @@ const initialState = {
 const useSettingStore = create<ISettingStore>((set) => ({
   ...initialState,
 
-  setPricing: (selectedPricing: PricingBucket): void => {
+  setPricing: (selectedPricing: PricingBucket, priority: number): void => {
     set((state) => {
       state.settingConfig.pricing.selectedPriceBucket = selectedPricing;
+      state.settingConfig.pricing.selectedPriceBucketPriority = priority;
       setItem(StorageKey.SETTING, state.settingConfig);
       return { ...state };
     });

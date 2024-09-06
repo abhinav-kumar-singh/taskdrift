@@ -28,15 +28,31 @@
 .top_section {
   height: 70px;
   position: fixed;
+  top: 15px !important;
   z-index: 1;
   top: 0px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top_section_child {
+  width: 90vw;
   background-color: rgb(var(--background-1));
+  box-shadow: var(--shadow-1);
+  opacity: 0.93;
+  border: 1px solid rgb(var(--border-color-1));
+  border-radius: 10px;
+}
+
+.content_element {
+  transition: filter 0.3s ease;
 }
 
 .middle_section {
   height: 320px;
-  padding-top: 90px;
+  padding-top: 100px;
 }
 
 .product_description {

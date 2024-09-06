@@ -15,6 +15,7 @@ import Upgrade from "../upgrade";
 import { APP_ROUTES } from "../../common/constants/app-routes";
 import Home from "../home";
 import Setting from "../setting";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Dashboard = () => {
   const [loc, setLocation] = useLocation();
@@ -58,10 +59,16 @@ const Dashboard = () => {
     }
   };
 
+  const handleGoBack = () => {
+    setLocation("/");
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.left_container}>
+        <div className={styles.go_back} onClick={handleGoBack}>
+          <ArrowBackIcon />
+        </div>
         <div className={styles.profile_section}>
           <UserInfo />
         </div>

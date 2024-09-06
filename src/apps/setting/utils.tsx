@@ -38,6 +38,7 @@ export const PRICING_LIST = [
       "Limited features access",
     ],
     colorAssociated: "#4CAF50",
+    priority: 1,
   },
   {
     title: "Premium",
@@ -53,6 +54,7 @@ export const PRICING_LIST = [
       "Full access to all features",
     ],
     colorAssociated: "#2196F3",
+    priority: 2,
   },
   {
     title: "Enterprise",
@@ -68,5 +70,24 @@ export const PRICING_LIST = [
       "Custom access to all features",
     ],
     colorAssociated: "#FFD700",
+    priority: 3,
   },
 ];
+
+export const PriceProductLimit = {
+  [PricingBucket.FREE]: {
+    DashboardLimit: 3,
+    TaskLimit: 10,
+    TaskLimitPerDay: 7,
+  },
+  [PricingBucket.PREMIUM]: {
+    DashboardLimit: 10,
+    TaskLimit: 50,
+    TaskLimitPerDay: 50,
+  },
+  [PricingBucket.ENTERPRISE]: {
+    DashboardLimit: 50,
+    TaskLimit: 100,
+    TaskLimitPerDay: 100,
+  },
+};

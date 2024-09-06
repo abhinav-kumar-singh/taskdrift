@@ -19,6 +19,7 @@ enum Theme {
 
 interface IPricing {
   selectedPriceBucket: PricingBucket;
+  selectedPriceBucketPriority: number;
 }
 
 interface IPersonalizations {
@@ -46,7 +47,7 @@ interface ISettingConfig {
 
 interface ISettingStore {
   settingConfig: ISettingConfig;
-  setPricing: (bucket: PricingBucket) => void;
+  setPricing: (bucket: PricingBucket, priority: number) => void;
   setTheme: (selectedTheme: Theme) => void;
   setSelectedSettingOption: (option: ISelectedSettingOption) => void;
 }
