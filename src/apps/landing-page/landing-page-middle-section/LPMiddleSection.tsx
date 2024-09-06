@@ -25,7 +25,7 @@ const LPMiddleSection = (): JSX.Element => {
   );
 
   const handleButtonClick = (showPage: boolean): void => {
-    if (dashBoardDetails?.dashBoardConfig?.length) {
+    if (dashBoardDetails?.dashBoardConfig?.length && showPage) {
       setLocation(APP_ROUTES.DASHBOARD);
     } else {
       setShowWelcomePage((prev) => !prev);
