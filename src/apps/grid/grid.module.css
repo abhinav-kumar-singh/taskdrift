@@ -1,10 +1,12 @@
 .todo_container {
-  width: 230px;
+  /* width: 230px; */
+  width: 95%;
   margin: 10px;
   cursor: pointer;
 }
 
 .todo_box {
+  width: 100%;
   min-height: 150px;
   max-height: 200px;
   width: 228px;
@@ -38,6 +40,8 @@
   justify-content: space-between;
   padding: 0px 15px;
   border-radius: 5px;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .info {
@@ -140,6 +144,8 @@
 .task_list {
   width: 254px;
   height: 100vh;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .list_view_header_container {
