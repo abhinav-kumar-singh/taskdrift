@@ -42,6 +42,15 @@
 
   --grid-header-z-index: 1;
   --filter-section: 100;
+
+  --text-gradient: linear-gradient(0deg, #11181c 20%, rgba(17, 24, 28, 0) 45%),
+    linear-gradient(
+      90deg,
+      #0f3058 0%,
+      #006adc 33.333%,
+      #11181c 50%,
+      #11181c 100%
+    );
 }
 
 [theme="dark"] {
@@ -64,4 +73,17 @@
 
   --dot-bg: white; /* Inverted */
   --dot-color: black; /* Inverted */
+
+  --text-gradient: linear-gradient(
+      0deg,
+      #b2c2cb 20%,
+      rgba(183, 199, 209, 0) 45%
+    ),
+    linear-gradient(
+      90deg,
+      #d3c6c6 0%,
+      #f6f8fa 33.333%,
+      #b3cdda 50%,
+      #a8c1c3 100%
+    );
 }

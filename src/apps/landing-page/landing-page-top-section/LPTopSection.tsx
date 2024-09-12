@@ -28,7 +28,6 @@ const LPTopSection = (): JSX.Element => {
   };
 
   const handleNavigation = (option: IHeaderItem): void => {
-    // about us will be shown in the modal
     if (option?.value === HeaderOptions.ABOUT_US) {
       setShowAboutUsModal(true);
     } else {
@@ -82,9 +81,9 @@ const LPTopSection = (): JSX.Element => {
           handleCloseModal={handleCloseModal}
           showModal={showAboutUsModal}
           modalWidth="md"
-          titleSummary="About Us"
           handleCrossIcon={() => setShowAboutUsModal(false)}
           dialogContent={<AboutUs />}
+          hideContentBorder
         />
       ) : null}
     </>

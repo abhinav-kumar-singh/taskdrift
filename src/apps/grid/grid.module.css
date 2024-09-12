@@ -1,5 +1,4 @@
 .todo_container {
-  /* width: 230px; */
   width: 95%;
   margin: 10px;
   cursor: pointer;
@@ -7,9 +6,6 @@
 
 .todo_box {
   width: 100%;
-  min-height: 150px;
-  max-height: 200px;
-  width: 228px;
   display: flex;
   flex-direction: column;
   border: 1px solid rgb(var(--border-color-2));
@@ -229,4 +225,8 @@
 .delete_action_task_name {
   color: rgb(var(--primary-color));
   padding: 0px 5px;
+}
+
+.table_list_row {
+  cursor: pointer;
 }

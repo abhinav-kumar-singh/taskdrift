@@ -24,7 +24,7 @@ const ListViewAccordion = (props: IAccordionHeader): JSX.Element => {
       <ListAccordionSummary taskRepName={taskRepName} taskCount={taskCount} />
       <AccordionDetails>
         <TableContainer sx={{ maxHeight: 440 }}>
-          <Table stickyHeader aria-label="sticky table">
+          <Table stickyHeader aria-label="sticky table" sx={{ width: "99%" }}>
             <TableHead>
               <ListHeader />
             </TableHead>
