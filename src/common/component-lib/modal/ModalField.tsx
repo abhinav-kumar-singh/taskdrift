@@ -13,10 +13,11 @@ interface IModalField {
   showModal: boolean;
   modalWidth?: "xs" | "sm" | "md" | "lg" | "xl";
   handleCrossIcon: () => void;
-  titleSummary: string;
+  titleSummary?: string;
   dialogContent: React.ReactNode;
   actionContent?: React.ReactNode;
   fullWidth?: boolean;
+  hideContentBorder?: boolean;
 }
 
 const ModalField = (props: IModalField): JSX.Element => {
@@ -29,6 +30,7 @@ const ModalField = (props: IModalField): JSX.Element => {
     actionContent,
     handleCrossIcon,
     fullWidth,
+    hideContentBorder,
   } = props;
   return (
     <React.Fragment>
@@ -54,7 +56,14 @@ const ModalField = (props: IModalField): JSX.Element => {
           }}>
           <CloseIcon />
         </IconButton>
-        <DialogContent dividers>{dialogContent}</DialogContent>
+        <DialogContent
+          dividers
+          sx={{
+            border: hideContentBorder ? "none" : "",
+            borderBottom: "none",
+          }}>
+          {dialogContent}
+        </DialogContent>
         <DialogActions>{actionContent}</DialogActions>
       </Dialog>
     </React.Fragment>

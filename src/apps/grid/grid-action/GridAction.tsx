@@ -1,13 +1,11 @@
 import { Button, Menu, MenuItem, ToggleButton } from "@mui/material";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import React, { useState } from "react";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import {
   setActivityLog,
   setNotification,
   useDashboardStore,
-  useTaskStore,
 } from "../../../store";
 import { IDashboardStore } from "../../../store/dashboard/dash-board.type";
 import styles from "../grid.module.css";
@@ -17,9 +15,6 @@ import { ActivityType } from "../../../store/activity/activity-log.types";
 import { generateUniqueId } from "../../../common/helpers/helpers";
 import ButtonField from "../../../common/component-lib/button-field";
 import ModalField from "../../../common/component-lib/modal";
-import AddNewTask from "../../add-new-task";
-import { MODE } from "../../add-new-task/add-new-task.types";
-import { ITasks } from "../../../store/tasks/task.type";
 import {
   NotificationColor,
   NotificationSeverity,
@@ -34,11 +29,6 @@ interface IGridAction {
 const GridAction = (props: IGridAction): JSX.Element => {
   const { id, taskSummary } = props;
 
-  const { taskStoreConfig } = useTaskStore();
-
-  const [showEditTaskModal, setShowEditTaskModal] = useState(false);
-  const [selectedTask, setSelectedTask] = useState<ITasks>();
-
   const dashBoardDetails = useDashboardStore() as IDashboardStore;
   const selectedDashBoardId = dashBoardDetails?.selectedDashBoardId;
 
@@ -51,18 +41,6 @@ const GridAction = (props: IGridAction): JSX.Element => {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleEdit = () => {
-    const currentTaskConfig = taskStoreConfig?.find(
-      (task) => task.dashBoardId === selectedDashBoardId
-    );
-    const selectedTask = currentTaskConfig?.tasks?.find(
-      (task) => task.id === id
-    );
-    if (selectedTask) setSelectedTask(selectedTask);
-
-    setShowEditTaskModal(true);
   };
 
   const handleDelete = () => {
@@ -123,13 +101,6 @@ const GridAction = (props: IGridAction): JSX.Element => {
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}>
-        <MenuItem onClick={handleEdit}>
-          <EditIcon
-            sx={{
-              color: "rgb(var(--tertiary-color))",
-            }}
-          />
-        </MenuItem>
         <MenuItem onClick={() => setShowDeleteModal(true)}>
           <DeleteForeverIcon
             sx={{
@@ -168,14 +139,6 @@ const GridAction = (props: IGridAction): JSX.Element => {
             </>
           }
           handleCrossIcon={() => setShowDeleteModal(false)}
-        />
-      ) : null}
-      {showEditTaskModal ? (
-        <AddNewTask
-          openAddNewTaskModal={showEditTaskModal}
-          setOpenAddNewTaskModal={setShowEditTaskModal}
-          mode={MODE.EDIT}
-          selectedTask={selectedTask}
         />
       ) : null}
     </>

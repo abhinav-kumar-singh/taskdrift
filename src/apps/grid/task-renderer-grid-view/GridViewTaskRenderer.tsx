@@ -88,7 +88,7 @@ const GridViewTaskRenderer = (props: IGridViewTaskRenderer): JSX.Element => {
           openAddNewTaskModal={showTaskModal}
           setOpenAddNewTaskModal={setShowTaskModal}
           selectedTask={taskConfig}
-          mode={MODE.REVIEW}
+          mode={MODE.EDIT}
         />
       ) : null}
     </>

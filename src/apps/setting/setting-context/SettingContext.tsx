@@ -4,6 +4,7 @@ import { SETTINGS } from "../../../store/setting/setting.type";
 import Personalizations from "./personalizations";
 import Pricing from "./pricing";
 import Contact from "./contact";
+import AboutUs from "./about-us";
 
 const SettingContext = () => {
   const selectedSetting =
@@ -17,10 +18,23 @@ const SettingContext = () => {
         return <Pricing />;
       case SETTINGS.CONTACT_US:
         return <Contact />;
+      case SETTINGS.ABOUT_US:
+        return (
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <AboutUs />
+          </div>
+        );
     }
   };
 
-  return <div>{getComponent()}</div>;
+  return <div style={{ width: "100%", height: "100%" }}>{getComponent()}</div>;
 };
 
 export default SettingContext;

@@ -79,8 +79,9 @@ const LPProductDescription = (): JSX.Element => {
         </div>
         <img
           src={PRODUCT_DESCRIPTION_LIST_IMAGES[listItemSelected.index]}
-          alt="task manager app"
+          alt={`task drift app - ${listItemSelected?.title}`}
           className={styles.product_description_img}
+          loading="lazy"
         />
         <div onClick={handleNext}>
           <ArrowForwardIosIcon

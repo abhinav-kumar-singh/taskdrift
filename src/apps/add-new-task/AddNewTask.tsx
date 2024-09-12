@@ -46,7 +46,9 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
     description: selectedTask?.description || "",
     labels: selectedTask?.labels?.join(",") || "",
     createdDate: dayjs().toISOString(),
-    originalEstimate: null,
+    originalEstimate: selectedTask?.originalEstimate
+      ? dayjs(selectedTask?.originalEstimate)
+      : null,
     assignedTo: selectedTask?.assignedTo || "",
   });
 
@@ -176,8 +178,6 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
         return t("Add New Task");
       case MODE.EDIT:
         return t("Edit Task");
-      case MODE.REVIEW:
-        return t("Review Task");
     }
   };
 
@@ -190,9 +190,6 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
       titleSummary={getTitleSummary()}
       dialogContent={
         <>
-          <div className={styles.user_description}>
-            {t("Required fields are marked with an asterisk *")}
-          </div>
           <div className={styles.first_row_container}>
             <TextFieldComp
               label={t("Project Name")}
@@ -300,20 +297,18 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
             </div>
           </div>
 
-          {mode === MODE.REVIEW ? null : (
-            <div className={styles.button_container}>
-              <Button onClick={() => setOpenAddNewTaskModal(false)}>
-                {t("Cancel")}
-              </Button>
-              <ButtonField
-                variant="contained"
-                onClick={handleTaskCreate}
-                isDisabled={isButtonDisabled()}
-                text={mode === MODE.EDIT ? t("Update") : t("Create")}
-                customClass={styles.button}
-              />
-            </div>
-          )}
+          <div className={styles.button_container}>
+            <Button onClick={() => setOpenAddNewTaskModal(false)}>
+              {t("Cancel")}
+            </Button>
+            <ButtonField
+              variant="contained"
+              onClick={handleTaskCreate}
+              isDisabled={isButtonDisabled()}
+              text={mode === MODE.EDIT ? t("Update") : t("Create")}
+              customClass={styles.button}
+            />
+          </div>
         </>
       }
     />

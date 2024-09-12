@@ -2,6 +2,7 @@ import { PricingBucket, SETTINGS } from "../../store/setting/setting.type";
 import WbIncandescentIcon from "@mui/icons-material/WbIncandescent";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import CallIcon from "@mui/icons-material/Call";
+import Diversity3Icon from "@mui/icons-material/Diversity3";
 
 export const SETTINGS_LIST = [
   {
@@ -21,6 +22,12 @@ export const SETTINGS_LIST = [
     value: SETTINGS.CONTACT_US,
     id: 3,
     icon: CallIcon,
+  },
+  {
+    title: "About Us",
+    value: SETTINGS.ABOUT_US,
+    id: 4,
+    icon: Diversity3Icon,
   },
 ];
 

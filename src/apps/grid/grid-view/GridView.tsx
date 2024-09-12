@@ -29,6 +29,7 @@ const GridView = (): JSX.Element => {
   const [taskObject, setTaskObject] = useState<ITasks>();
   const [fieldsToDisable, setFieldsToDisable] = useState<string[]>([]);
 
+  // this is used when we click on + icon in the header of row
   const handleAddSpecificTask = (data: IDropdownOption) => {
     let taskObj: ITasks = {
       type: "" as TaskType,

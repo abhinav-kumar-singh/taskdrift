@@ -4,7 +4,6 @@ import { ITasks } from "../../store/tasks/task.type";
 enum MODE {
   ADD = "add",
   EDIT = "edit",
-  REVIEW = "review",
 }
 
 interface IAddNewTask {
