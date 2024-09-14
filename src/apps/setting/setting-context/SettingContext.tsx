@@ -5,6 +5,7 @@ import Personalizations from "./personalizations";
 import Pricing from "./pricing";
 import Contact from "./contact";
 import AboutUs from "./about-us";
+import Shimmer from "../../../common/component-lib/shimmer";
 
 const SettingContext = () => {
   const selectedSetting =
@@ -13,11 +14,19 @@ const SettingContext = () => {
   const getComponent = () => {
     switch (selectedSetting?.value) {
       case SETTINGS.PERSONALIZATIONS:
-        return <Personalizations />;
+        return (
+          <Personalizations
+            suspenseFallback={<Shimmer height="100%" width="100%" />}
+          />
+        );
       case SETTINGS.PRICING:
-        return <Pricing />;
+        return (
+          <Pricing suspenseFallback={<Shimmer height="100%" width="100%" />} />
+        );
       case SETTINGS.CONTACT_US:
-        return <Contact />;
+        return (
+          <Contact suspenseFallback={<Shimmer height="100%" width="100%" />} />
+        );
       case SETTINGS.ABOUT_US:
         return (
           <div
@@ -28,7 +37,9 @@ const SettingContext = () => {
               justifyContent: "center",
               alignItems: "center",
             }}>
-            <AboutUs />
+            <AboutUs
+              suspenseFallback={<Shimmer height="100%" width="100%" />}
+            />
           </div>
         );
     }

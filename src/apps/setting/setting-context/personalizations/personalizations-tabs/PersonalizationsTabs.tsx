@@ -5,6 +5,7 @@ import {
 } from "../personalization.type";
 import MyProfilePage from "./my-profile-page";
 import CustomizationPage from "./customization-page";
+import Shimmer from "../../../../../common/component-lib/shimmer/Shimmer";
 
 const PersonalizationsTabs = (props: IPersonalizationsTabs): JSX.Element => {
   const { optionsSelected } = props;
@@ -12,11 +13,23 @@ const PersonalizationsTabs = (props: IPersonalizationsTabs): JSX.Element => {
   const getSelectedTabPage = () => {
     switch (optionsSelected?.value) {
       case PERSONALIZATIONS.MY_PROFILE:
-        return <MyProfilePage />;
+        return (
+          <MyProfilePage
+            suspenseFallback={<Shimmer width="100%" height="100%" />}
+          />
+        );
       case PERSONALIZATIONS.PERSONALIZATIONS:
-        return <CustomizationPage />;
+        return (
+          <CustomizationPage
+            suspenseFallback={<Shimmer width="100%" height="100%" />}
+          />
+        );
       default:
-        return <div></div>;
+        return (
+          <MyProfilePage
+            suspenseFallback={<Shimmer width="100%" height="100%" />}
+          />
+        );
     }
   };
 
