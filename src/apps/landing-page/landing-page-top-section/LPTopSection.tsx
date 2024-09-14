@@ -55,14 +55,14 @@ const LPTopSection = (): JSX.Element => {
           {HEADER_OPTION_LIST.map((option) => {
             return (
               <div
-                className={styles.header_option}
+                className={`${styles.header_option} ${styles.top_navigation}`}
                 onClick={() => handleNavigation(option)}>
                 {t(option.title)}
               </div>
             );
           })}
           <div
-            className={styles.header_option}
+            className={styles.theme_button}
             onClick={handleThemeChange}
             title="Change Theme">
             {selectedTheme === Theme.LIGHT ? (

@@ -83,7 +83,37 @@
   color: rgb(var(--primary-color));
 }
 
+.pricing_plan_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.free_label {
+  position: absolute;
+  font-size: 50px;
+  transform: rotate(-30deg);
+  font-family: sans-serif, math;
+  font-weight: 900;
+  color: rgb(var(--primary-color));
+}
+
+.beta_phase {
+  font-size: 16px;
+  color: rgb(var(--background-2));
+}
+
+.plan_validation {
+  font-size: 20px;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
 .pricing_plan_list_container {
+  opacity: 0.3;
   display: flex;
   gap: 30px;
   justify-content: center;
@@ -110,7 +140,7 @@
 }
 
 .pricing_plan_individual_list:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
   transform: scale(1.05);
   box-shadow: var(--shadow-1);
 }

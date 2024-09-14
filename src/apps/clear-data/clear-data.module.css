@@ -1,0 +1,12 @@
+.summary {
+  color: rgb(0, 131, 148);
+  width: 500px !important;
+}
+
+.warning {
+  color: red;
+}
+
+.button {
+  width: 140px !important;
+}

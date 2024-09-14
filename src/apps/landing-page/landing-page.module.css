@@ -79,20 +79,33 @@
   align-items: center;
 }
 
+.top_navigation:hover {
+  background-color: rgb(var(--background-3));
+  border-radius: 10px;
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
 .header_option {
   cursor: pointer;
   font-size: 18px;
   padding: 10px;
-
-  transition: background-color 1s ease, color 1s ease;
+  border-radius: 10px;
 }
 
-.lightTheme .header_option {
+.theme_button {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.lightTheme .theme_button {
   background-color: #fff;
   color: #000;
 }
 
-.darkTheme .header_option {
+.darkTheme .theme_button {
   background-color: #333;
   color: #fff;
 }
@@ -155,6 +168,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  background-color: rgb(var(--button-1)) !important;
+  color: rgb(var(--secondary-color)) !important;
+}
+
+.get_started_button:hover {
+  background-color: rgb(var(--secondary-color)) !important;
+  color: rgb(var(--primary-color)) !important;
 }
 
 .icon_style {

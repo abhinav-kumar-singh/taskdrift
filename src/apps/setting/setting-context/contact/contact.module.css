@@ -56,3 +56,11 @@
   margin-top: 20px;
   box-shadow: var(--shadow-1);
 }
+
+.error_message {
+  color: red;
+}
+
+.button_loading {
+  pointer-events: none;
+}

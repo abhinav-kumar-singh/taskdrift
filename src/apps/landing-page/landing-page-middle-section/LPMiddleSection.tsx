@@ -61,7 +61,7 @@ const LPMiddleSection = (): JSX.Element => {
           endIcon={<SendIcon fontSize="large" className={styles.icon_style} />}
           onClick={() => handleButtonClick(true)}
         />
-        <div className={styles.user_info}>Free FOREVER*</div>
+        <div className={styles.user_info}>{ t("Free FOREVER")}*</div>
       </div>
       {showWelcomePage ? (
         <Welcome

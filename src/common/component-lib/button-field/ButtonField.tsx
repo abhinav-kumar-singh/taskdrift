@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import styles from "./button.module.css";
 
 interface IButtonField {
   variant: "contained" | "outlined" | "text";
@@ -9,6 +10,7 @@ interface IButtonField {
   text: string | JSX.Element;
   customClass?: string;
   isDisabled?: boolean;
+  loading?: boolean;
 }
 
 const ButtonField = (props: IButtonField): JSX.Element => {
@@ -20,6 +22,7 @@ const ButtonField = (props: IButtonField): JSX.Element => {
     text,
     customClass,
     isDisabled,
+    loading,
   } = props;
   return (
     <Button
@@ -40,7 +43,10 @@ const ButtonField = (props: IButtonField): JSX.Element => {
       startIcon={startIcon}
       endIcon={endIcon}
       disabled={isDisabled}>
-      {text}
+      <div className={styles.button_text}>
+        <div>{text}</div>
+        {loading && <div className={styles.loader}></div>}
+      </div>
     </Button>
   );
 };

@@ -20,7 +20,7 @@ const AboutUs = (): JSX.Element => {
             "Welcome to my Task Manager app, a personal project born out of a passion for productivity and efficient task management. As the sole developer behind this initiative, I am dedicated to creating a seamless and intuitive experience that helps you organize your tasks and achieve your goals with ease. This app is a reflection of my commitment to simplicity, functionality, and user-friendly design, all crafted to empower you to manage your time effectively. Thank you for joining me on this journey towards better productivity—together, we can accomplish more."
           )}
         </div>
-        <div className={style.connection_message}>"Let's Connect"</div>
+        <div className={style.connection_message}>{t("Let's Connect")}</div>
         <div className={style.connect_links}>
           <div className={style.link}>
             <LinkedInIcon fontSize="large" />

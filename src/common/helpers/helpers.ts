@@ -69,3 +69,8 @@ export const getFormattedEstimatedDate = (
 
   return formattedEstimate;
 };
+
+export const isValidEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};

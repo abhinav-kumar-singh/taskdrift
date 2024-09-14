@@ -20,6 +20,8 @@
 
   --shadow-1: 0 0 5px rgba(0, 0, 0, 0.05), 5px 5px 5px rgba(0, 0, 0, 0.1);
 
+  --button-1: 0, 49, 102;
+
   --border-color-1: 131, 130, 130;
   --border-color-2: 209, 215, 222;
   --border-color-3: 0, 0, 0;
@@ -73,6 +75,8 @@
 
   --dot-bg: white; /* Inverted */
   --dot-color: black; /* Inverted */
+
+  --button-1: 204, 224, 255;
 
   --text-gradient: linear-gradient(
       0deg,

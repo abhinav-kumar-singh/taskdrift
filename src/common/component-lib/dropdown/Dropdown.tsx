@@ -8,6 +8,8 @@ import {
 } from "@mui/material";
 
 import { IDropdownOption } from "../../types/common.types";
+import { useSettingStore } from "../../../store";
+import { Theme } from "../../../store/setting/setting.type";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -42,6 +44,11 @@ const Dropdown = (props: IDropdown): JSX.Element => {
     showLabel,
     isDisabled,
   } = props;
+
+  const selectedTheme = useSettingStore(
+    (state) => state.settingConfig?.personalizations
+  )?.theme;
+
   return (
     <FormControl
       sx={{
@@ -49,6 +56,7 @@ const Dropdown = (props: IDropdown): JSX.Element => {
         maxWidth: 200,
 
         svg: {
+          backgroundColor: "rgb(var(--background-3))",
           color: "rgb(var(--primary-color))",
         },
         margin: "12px 0 25px 0px",
@@ -67,16 +75,38 @@ const Dropdown = (props: IDropdown): JSX.Element => {
         input={<OutlinedInput />}
         inputProps={{ "aria-label": "Without label" }}
         sx={{
-          backgroundColor: "rgb(var(--background-1))",
+          backgroundColor: "rgb(var(--background-3))",
           color: "rgb(var(--primary-color))",
         }}
         MenuProps={MenuProps}>
-        <MenuItem value="">
+        <MenuItem
+          value=""
+          sx={{
+            backgroundColor: "rgb(var(--background-3))",
+            "&:hover": {
+              color:
+                selectedTheme === Theme.DARK
+                  ? "rgb(var(--secondary-color))"
+                  : "rgb(var(--primary-color))",
+            },
+          }}>
           <em>None</em>
         </MenuItem>
         {dropDownOption.map((option) => {
           return (
-            <MenuItem value={option.value} key={option.index}>
+            <MenuItem
+              value={option.value}
+              key={option.index}
+              sx={{
+                backgroundColor: "rgb(var(--background-3))",
+                color: "rgb(var(--primary-color))",
+                "&:hover": {
+                  color:
+                    selectedTheme === Theme.DARK
+                      ? "rgb(var(--secondary-color))"
+                      : "rgb(var(--primary-color))",
+                },
+              }}>
               {option.title}
             </MenuItem>
           );

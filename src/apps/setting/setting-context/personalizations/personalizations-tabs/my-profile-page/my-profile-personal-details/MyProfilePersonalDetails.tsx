@@ -9,7 +9,7 @@ const MyProfilePersonalDetails = (): JSX.Element => {
 
   const getList = getPersonalDetailsList(userInfo, setting.settingConfig);
 
-  
+
   return (
     <div className={styles.personal_details_container}>
       {getList.map((item) => {

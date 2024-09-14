@@ -296,20 +296,21 @@ const AddNewTask = (props: IAddNewTask): JSX.Element => {
               </div>
             </div>
           </div>
-
-          <div className={styles.button_container}>
-            <Button onClick={() => setOpenAddNewTaskModal(false)}>
-              {t("Cancel")}
-            </Button>
-            <ButtonField
-              variant="contained"
-              onClick={handleTaskCreate}
-              isDisabled={isButtonDisabled()}
-              text={mode === MODE.EDIT ? t("Update") : t("Create")}
-              customClass={styles.button}
-            />
-          </div>
         </>
+      }
+      actionContent={
+        <div className={styles.button_container}>
+          <Button onClick={() => setOpenAddNewTaskModal(false)}>
+            {t("Cancel")}
+          </Button>
+          <ButtonField
+            variant="contained"
+            onClick={handleTaskCreate}
+            isDisabled={isButtonDisabled()}
+            text={mode === MODE.EDIT ? t("Update") : t("Create")}
+            customClass={styles.button}
+          />
+        </div>
       }
     />
   );
