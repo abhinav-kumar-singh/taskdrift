@@ -18,7 +18,28 @@ const DateTime = (props: IDateTime): JSX.Element => {
         label={label}
         value={value}
         onChange={onChange}
-        sx={customStyle}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            color: "rgb(var(--primary-color))",
+
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "rgb(var(--border-color-4))",
+            },
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: "rgb(var(--border-color-3))",
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: "rgb(var(--primary-color))",
+            },
+            "& .MuiSvgIcon-root": {
+              color: "rgb(var(--primary-color))",
+            },
+            "& .MuiInputBase-input": {
+              color: "rgb(var(--primary-color))",
+            },
+          },
+          ...customStyle,
+        }}
       />
     </LocalizationProvider>
   );

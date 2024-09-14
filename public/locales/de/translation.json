@@ -88,7 +88,7 @@
   "Analytics": "Analytik",
   "Still in DOUBT, why choose out product?": "Ich bin immer noch im ZWEIFEL, warum sollte ich mich für dieses Produkt entscheiden?",
   "GET IN TOUCH": "Nehmen Sie Kontakt auf",
-  "First Name": "Vorname",
+  "Name": "Name",
   "Last Name": "Nachname",
   "Email": "Email",
   "Phone Number": "Telefonnummer",
@@ -128,5 +128,8 @@
   "Language changed successfully": "Sprache erfolgreich geändert",
   "Theme changed successfully": "Thema erfolgreich geändert",
   "About Abhinav": "Über Abhinav",
-  "Welcome to my Task Manager app, a personal project born out of a passion for productivity and efficient task management. As the sole developer behind this initiative, I am dedicated to creating a seamless and intuitive experience that helps you organize your tasks and achieve your goals with ease. This app is a reflection of my commitment to simplicity, functionality, and user-friendly design, all crafted to empower you to manage your time effectively. Thank you for joining me on this journey towards better productivity—together, we can accomplish more.": "Willkommen bei meiner Task-Manager-App, einem persönlichen Projekt, das aus einem entstanden ist Leidenschaft für Produktivität und effizientes Aufgabenmanagement. Als Sohle Als Entwickler hinter dieser Initiative widme ich mich der Schaffung eines nahtlose und intuitive Erfahrung, die Ihnen bei der Organisation Ihrer Aufgaben hilft und erreichen Sie Ihre Ziele mit Leichtigkeit. Diese App ist ein Spiegelbild meiner Engagement für Einfachheit, Funktionalität und benutzerfreundliches Design Entwickelt, um Sie in die Lage zu versetzen, Ihre Zeit effektiv zu verwalten. Vielen Dank für Begleiten Sie mich auf diesem Weg zu mehr Produktivität – gemeinsam, wir kann mehr erreichen."
+  "Welcome to my Task Manager app, a personal project born out of a passion for productivity and efficient task management. As the sole developer behind this initiative, I am dedicated to creating a seamless and intuitive experience that helps you organize your tasks and achieve your goals with ease. This app is a reflection of my commitment to simplicity, functionality, and user-friendly design, all crafted to empower you to manage your time effectively. Thank you for joining me on this journey towards better productivity—together, we can accomplish more.": "Willkommen bei meiner Task-Manager-App, einem persönlichen Projekt, das aus einem entstanden ist Leidenschaft für Produktivität und effizientes Aufgabenmanagement. Als Sohle Als Entwickler hinter dieser Initiative widme ich mich der Schaffung eines nahtlose und intuitive Erfahrung, die Ihnen bei der Organisation Ihrer Aufgaben hilft und erreichen Sie Ihre Ziele mit Leichtigkeit. Diese App ist ein Spiegelbild meiner Engagement für Einfachheit, Funktionalität und benutzerfreundliches Design Entwickelt, um Sie in die Lage zu versetzen, Ihre Zeit effektiv zu verwalten. Vielen Dank für Begleiten Sie mich auf diesem Weg zu mehr Produktivität – gemeinsam, wir kann mehr erreichen.",
+  "Free FOREVER": "KOSTENLOS (VON ALLEIN)",
+  "Connect with us": "Kontaktieren Sie uns",
+  "Let's Connect": "Kontaktieren Sie uns"
 }

@@ -16,6 +16,7 @@ import { APP_ROUTES } from "../../common/constants/app-routes";
 import Home from "../home";
 import Setting from "../setting";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ClearData from "../clear-data";
 
 const Dashboard = () => {
   const [loc, setLocation] = useLocation();
@@ -80,6 +81,9 @@ const Dashboard = () => {
         </div>
         <div>
           <Upgrade />
+        </div>
+        <div className={styles.clear_all}>
+          <ClearData />
         </div>
       </div>
       <div className={styles.right_container}>{renderContent()}</div>
