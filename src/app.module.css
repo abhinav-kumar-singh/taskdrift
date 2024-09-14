@@ -53,6 +53,11 @@
       #11181c 50%,
       #11181c 100%
     );
+
+  --shimmer-color1: 245, 245, 245;
+  --shimmer-color2: 200, 200, 200;
+  --shimmer-color3: 220, 220, 220;
+  --shimmer-color4: 245, 245, 245;
 }
 
 [theme="dark"] {
@@ -90,4 +95,9 @@
       #b3cdda 50%,
       #a8c1c3 100%
     );
+
+  --shimmer-color1: 55, 55, 55;
+  --shimmer-color2: 75, 75, 75;
+  --shimmer-color3: 100, 100, 100;
+  --shimmer-color4: 55, 55, 55;
 }

@@ -7,6 +7,7 @@ import {
   PERSONALIZATIONS,
 } from "./personalization.type";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Shimmer from "../../../../common/component-lib/shimmer";
 
 const Personalizations = (): JSX.Element => {
   const [optionsSelected, setOptionsSelected] =
@@ -26,7 +27,7 @@ const Personalizations = (): JSX.Element => {
         />
       </div>
       <div className={styles.right_container}>
-        <PersonalizationsTabs optionsSelected={optionsSelected} />
+        <PersonalizationsTabs optionsSelected={optionsSelected} suspenseFallback={<Shimmer width="100%" height="100%" />}/>
       </div>
     </div>
   );

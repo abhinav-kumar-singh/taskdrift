@@ -9,16 +9,15 @@
 }
 
 .shimmer_container {
-  background: rgb(var(--marvin-background-2));
+  background: rgb(var(red));
   background-image: linear-gradient(
     to right,
-    rgb(var(--marvin-background-2)) 0%,
-    rgb(var(--marvin-divider-1)) 20%,
-    rgb(var(--marvin-background-2)) 40%,
-    rgb(var(--marvin-background-2)) 100%
+    rgb(var(--shimmer-color1)) 0%,
+    rgb(var(--shimmer-color2)) 20%,
+    rgb(var(--shimmer-color3)) 40%,
+    rgb(var(--shimmer-color4)) 100%
   );
   background-repeat: no-repeat;
-  background-size: 800px 104px;
   display: inline-block;
   position: relative;
   animation-duration: 1s;

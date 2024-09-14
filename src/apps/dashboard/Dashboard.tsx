@@ -17,6 +17,7 @@ import Home from "../home";
 import Setting from "../setting";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ClearData from "../clear-data";
+import Shimmer from "../../common/component-lib/shimmer/Shimmer";
 
 const Dashboard = () => {
   const [loc, setLocation] = useLocation();
@@ -36,26 +37,40 @@ const Dashboard = () => {
         return (
           <>
             <div className={styles.top_header}>
-              <TopHeader />
+              <TopHeader
+                suspenseFallback={<Shimmer height="50px" width="100%" />}
+              />
             </div>
-            <MidSection />
+            <MidSection
+              suspenseFallback={<Shimmer height="400px" width="100%" />}
+            />
             <div className={styles.filter_section}>
-              <Filters />
+              <Filters
+                suspenseFallback={<Shimmer height="70px" width="100%" />}
+              />
             </div>
             <div className={styles.grid_section}>
-              <GridLayout />
+              <GridLayout
+                suspenseFallback={<Shimmer height="400px" width="100%" />}
+              />
             </div>
           </>
         );
       }
       case APP_ROUTES.HOME: {
-        return <Home />;
+        return (
+          <Home suspenseFallback={<Shimmer height="100%" width="100%" />} />
+        );
       }
       case APP_ROUTES.SETTING: {
-        return <Setting />;
+        return (
+          <Setting suspenseFallback={<Shimmer height="100%" width="100%" />} />
+        );
       }
       default: {
-        return <Home />;
+        return (
+          <Home suspenseFallback={<Shimmer height="100%" width="100%" />} />
+        );
       }
     }
   };
@@ -71,16 +86,20 @@ const Dashboard = () => {
           <ArrowBackIcon />
         </div>
         <div className={styles.profile_section}>
-          <UserInfo />
+          <UserInfo suspenseFallback={<Shimmer height="50px" width="100%" />} />
         </div>
         <div className={styles.main_menu}>
-          <Mainmenu />
+          <Mainmenu
+            suspenseFallback={<Shimmer height="170px" width="100%" />}
+          />
         </div>
         <div>
-          <DashboardPages />
+          <DashboardPages
+            suspenseFallback={<Shimmer height="320px" width="100%" />}
+          />
         </div>
         <div>
-          <Upgrade />
+          <Upgrade suspenseFallback={<Shimmer height="120px" width="100%" />} />
         </div>
         <div className={styles.clear_all}>
           <ClearData />

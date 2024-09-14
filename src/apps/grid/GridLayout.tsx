@@ -1,3 +1,4 @@
+import Shimmer from "../../common/component-lib/shimmer";
 import { useDashboardStore } from "../../store";
 import {
   DashBoardViewType,
@@ -19,11 +20,23 @@ const GridLayout = (): JSX.Element => {
   const renderGridLayout = (): JSX.Element => {
     switch (selectedView) {
       case DashBoardViewType.TABLE:
-        return <GridView />;
+        return (
+          <GridView
+            suspenseFallback={<Shimmer height="400px" width="100%" />}
+          />
+        );
       case DashBoardViewType.LIST:
-        return <ListView />;
+        return (
+          <ListView
+            suspenseFallback={<Shimmer height="400px" width="100%" />}
+          />
+        );
       case DashBoardViewType.ACTIVITY_LOG:
-        return <ActivityLog />;
+        return (
+          <ActivityLog
+            suspenseFallback={<Shimmer height="400px" width="100%" />}
+          />
+        );
       default:
         return <GridView />;
     }
