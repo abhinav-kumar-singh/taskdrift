@@ -40,13 +40,13 @@ const Pricing = (): JSX.Element => {
       <div className={styles.pricing_plan_container}>
         <div className={styles.free_label}>
           <AutoFixHighIcon fontSize="large" />
-          Absolutely <span style={{ color: "rgb(0, 131, 148)" }}>
-            "FREE"
+          {t("Absolutely")} <span style={{ color: "rgb(0, 131, 148)" }}>
+            {t("Free")}
           </span>{" "}
-          for now
-          <span className={styles.beta_phase}>(beta phase)</span>
+          {t("for now")}
+          <span className={styles.beta_phase}>{(t("beta phase"))}</span>
           <div className={styles.plan_validation}>
-            Plan Validation will start soon
+            {t("Plan Validation will start soon")}
           </div>
         </div>
         <div className={styles.pricing_plan_list_container}>
