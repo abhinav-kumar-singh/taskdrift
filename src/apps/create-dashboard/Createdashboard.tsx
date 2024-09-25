@@ -154,6 +154,7 @@ const Createdashboard = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            color: "rgb(var(--primary-color))",
           }}>
           {heading}
         </Typography>

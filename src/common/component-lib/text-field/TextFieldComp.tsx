@@ -49,7 +49,7 @@ const TextFieldComp = (props: ITextField): JSX.Element => {
       size={size || "small"}
       InputLabelProps={{
         sx: {
-          color: "rgb(var(--primary-color))",
+          color: "rgb(var(--border-color-1))",
           [`&.${inputLabelClasses.shrink}`]: {
             color: "rgb(var(--primary-color))",
           },

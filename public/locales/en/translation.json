@@ -129,11 +129,12 @@
   "Theme changed successfully": "Theme changed successfully",
   "About Abhinav": "About Abhinav",
   "Welcome to my Task Manager app, a personal project born out of a passion for productivity and efficient task management. As the sole developer behind this initiative, I am dedicated to creating a seamless and intuitive experience that helps you organize your tasks and achieve your goals with ease. This app is a reflection of my commitment to simplicity, functionality, and user-friendly design, all crafted to empower you to manage your time effectively. Thank you for joining me on this journey towards better productivity—together, we can accomplish more.": "Welcome to my Task Manager app, a personal project born out of a passion for productivity and efficient task management. As the sole developer behind this initiative, I am dedicated to creating a seamless and intuitive experience that helps you organize your tasks and achieve your goals with ease. This app is a reflection of my commitment to simplicity, functionality, and user-friendly design, all crafted to empower you to manage your time effectively. Thank you for joining me on this journey towards better productivity—together, we can accomplish more.",
-  "Free FOREVER": "Free FOREVER",
+    "Free FOREVER": "Free FOREVER",
   "Connect with us": "Connect with us",
   "Let's Connect": "Let's Connect",
   "Absolutely": "Absolutely",
   "for now": "for now",
   "beta phase":"beta phase",
-  "Plan Validation will start soon": "Plan Validation will start soon"
+  "Plan Validation will start soon": "Plan Validation will start soon",
+  "DashBoard Deleted Successfully": "DashBoard deleted successfully"
 }

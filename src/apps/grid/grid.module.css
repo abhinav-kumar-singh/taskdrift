@@ -4,6 +4,10 @@
   cursor: pointer;
 }
 
+.todo_container:active {
+  opacity: 0.5;
+}
+
 .todo_box {
   width: 100%;
   display: flex;

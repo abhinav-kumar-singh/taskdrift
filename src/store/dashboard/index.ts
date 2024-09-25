@@ -3,6 +3,7 @@ import {
   useDashboardStore,
   setIsDefaultDashboard,
   setSelectedDartboardId,
+  deleteSelectedDashboard
 } from "./dash-board.store";
 
 export {
@@ -10,4 +11,5 @@ export {
   useDashboardStore,
   setIsDefaultDashboard,
   setSelectedDartboardId,
+  deleteSelectedDashboard
 };

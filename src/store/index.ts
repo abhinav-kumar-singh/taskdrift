@@ -15,6 +15,7 @@ import {
   setDashBoardView,
   setIsDefaultDashboard,
   setSelectedDartboardId,
+  deleteSelectedDashboard
 } from "./dashboard";
 
 import {
@@ -56,5 +57,6 @@ export {
   useNotificationStore,
   setIsDefaultDashboard,
   setSelectedDartboardId,
+  deleteSelectedDashboard,
   setActivityLogFilteredData,
 };

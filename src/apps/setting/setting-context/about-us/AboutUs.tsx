@@ -12,7 +12,8 @@ const AboutUs = (): JSX.Element => {
   return (
     <div
       className={style.container}
-      style={{ backgroundImage: `url(${developerImage})` }}>
+      style={{ backgroundImage: `url(${developerImage})` }}
+    >
       <div className={style.welcome_message}>
         <div className={style.dev_name}>{t("About Abhinav")}</div>
         <div>
@@ -22,7 +23,15 @@ const AboutUs = (): JSX.Element => {
         </div>
         <div className={style.connection_message}>{t("Let's Connect")}</div>
         <div className={style.connect_links}>
-          <div className={style.link}>
+          <div
+            className={style.link}
+            onClick={() => {
+              window.open(
+                "https://www.linkedin.com/in/abhinav-singh-602934267/",
+                "_blank"
+              );
+            }}
+          >
             <LinkedInIcon fontSize="large" />
           </div>
           <div className={style.link}>

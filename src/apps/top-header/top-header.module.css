@@ -97,3 +97,14 @@
   color: rgb(var(--primary-color));
   padding: 0px 5px;
 }
+
+.delete_dashboard_button {
+  width: 110px !important;
+}
+
+.delete_dashboard_button > div > div {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 85px;
+}

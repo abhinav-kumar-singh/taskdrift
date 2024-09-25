@@ -10,6 +10,7 @@ import { HeaderOptions, IHeaderItem } from "../landing-page.types";
 import { useState } from "react";
 import ModalField from "../../../common/component-lib/modal/ModalField";
 import AboutUs from "../../setting/setting-context/about-us";
+import { LANDING_PAGE_LINKS } from "../../../common/constants/landing-page-links";
 
 const LPTopSection = (): JSX.Element => {
   const { t } = useTranslation();
@@ -47,16 +48,26 @@ const LPTopSection = (): JSX.Element => {
     }
   };
 
+  const handleLogoClick = (): void => {
+    const element = document.getElementById(LANDING_PAGE_LINKS.BACK_TO_TOP);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <div className={styles.top_section_container}>
-        <div className={styles.company_logo}>Task Drift</div>
+        <div className={styles.company_logo} onClick={handleLogoClick}>
+          Task Drift
+        </div>
         <div className={styles.header_option_container}>
           {HEADER_OPTION_LIST.map((option) => {
             return (
               <div
                 className={`${styles.header_option} ${styles.top_navigation}`}
-                onClick={() => handleNavigation(option)}>
+                onClick={() => handleNavigation(option)}
+              >
                 {t(option.title)}
               </div>
             );
@@ -64,7 +75,8 @@ const LPTopSection = (): JSX.Element => {
           <div
             className={styles.theme_button}
             onClick={handleThemeChange}
-            title="Change Theme">
+            title="Change Theme"
+          >
             {selectedTheme === Theme.LIGHT ? (
               <DarkModeIcon />
             ) : (

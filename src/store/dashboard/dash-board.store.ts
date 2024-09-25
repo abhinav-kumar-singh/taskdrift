@@ -114,11 +114,43 @@ const setSelectedDartboardId = (dashBoardId: string): void => {
   });
 };
 
+const getSelectedDashboardIdAfterDelete = (
+  dashBoardConfig: IDashboardConfig[],
+  dashBoardId: string
+): string => {
+  const selectedDashBoardId = dashBoardConfig.findIndex(
+    (config) => config?.dashboardId === dashBoardId
+  );
+
+  if (selectedDashBoardId === 0) return dashBoardConfig[1]?.dashboardId;
+  else if (selectedDashBoardId === dashBoardConfig.length - 1)
+    return dashBoardConfig[dashBoardConfig.length - 2]?.dashboardId;
+  else return dashBoardConfig[selectedDashBoardId - 1]?.dashboardId;
+};
+
+const deleteSelectedDashboard = (dashBoardId: string): void => {
+  useDashboardStore.setState((state) => {
+    const newState = {
+      ...state,
+      dashBoardConfig: state.dashBoardConfig.filter(
+        (data) => data.dashboardId !== dashBoardId
+      ),
+      selectedDashBoardId: getSelectedDashboardIdAfterDelete(
+        state.dashBoardConfig,
+        dashBoardId
+      ),
+    };
+    setItem(StorageKey.DASH_BOARD_DETAILS, newState);
+    return newState;
+  });
+};
+
 export {
   setDashBoardName,
   setDashBoardView,
   useDashboardStore,
   setIsDefaultDashboard,
   setSelectedDartboardId,
+  deleteSelectedDashboard,
   setDashBoardMidSectionVisibility,
 };
