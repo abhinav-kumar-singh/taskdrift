@@ -24,7 +24,12 @@ const UserInfo = (): JSX.Element => {
             fontSize: "15px",
             marginBottom: "0px !important",
             color: "rgb(var(--primary-color))",
-          }}>
+            maxWidth: "160px",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+          }}
+        >
           {userName}
         </Typography>
         <Typography
@@ -32,7 +37,12 @@ const UserInfo = (): JSX.Element => {
           sx={{
             fontSize: "12px",
             color: "rgb(var(--tertiary-color))",
-          }}>
+            maxWidth: "160px",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+          }}
+        >
           {email}
         </Typography>
       </div>

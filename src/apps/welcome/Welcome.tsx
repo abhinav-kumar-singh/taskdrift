@@ -55,16 +55,19 @@ const Welcome = (props: IWelcomeProps): JSX.Element => {
               fontSize: "24px",
               marginTop: "10px",
               marginBottom: "10px",
-            }}>
+              color: "rgb(var(--primary-color))",
+            }}
+          >
             {t("Welcome to Task Drift!")}
           </Typography>
           <Typography
             gutterBottom
             sx={{
               fontSize: "14px",
-              color: "rgb(var(--tertiary-color)",
+              color: "rgb(var(--button-1))",
               marginBottom: "20px",
-            }}>
+            }}
+          >
             {t("Let's start automating your tasks.")}
             <span className={styles.title}>
               {t(
@@ -77,14 +80,16 @@ const Welcome = (props: IWelcomeProps): JSX.Element => {
             <div
               className={`${styles.user_info_accordion} ${
                 userDataSaved ? styles.disabled : ""
-              }`}>
+              }`}
+            >
               <Accordion
                 defaultExpanded
                 sx={{
                   boxShadow: "none",
                   backgroundColor: "rgb(var(--background-1))",
                   pointerEvents: userDataSaved ? "none" : "auto",
-                }}>
+                }}
+              >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1-content"
@@ -96,8 +101,11 @@ const Welcome = (props: IWelcomeProps): JSX.Element => {
                       margin: "4px !important",
                     },
                     width: "300px !important",
-                  }}>
-                  <div>{t("Information")}</div>
+                  }}
+                >
+                  <div className={styles.login_info_text}>
+                    {t("Information")}
+                  </div>
                 </AccordionSummary>
                 <AccordionDetails>
                   <LoginInfo setUserDataSaved={setUserDataSaved} />
@@ -107,14 +115,16 @@ const Welcome = (props: IWelcomeProps): JSX.Element => {
             <div
               className={`${styles.dashboard_config_accordion} ${
                 !userDataSaved ? styles.disabled : ""
-              }`}>
+              }`}
+            >
               <Accordion
                 defaultExpanded
                 sx={{
                   boxShadow: "none",
                   backgroundColor: "rgb(var(--background-1))",
                   pointerEvents: !userDataSaved ? "none" : "auto",
-                }}>
+                }}
+              >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1-content"
@@ -126,8 +136,11 @@ const Welcome = (props: IWelcomeProps): JSX.Element => {
                       margin: "4px !important",
                     },
                     width: "300px !important",
-                  }}>
-                  <div>{t("Dashboard Details")}</div>
+                  }}
+                >
+                  <div className={styles.login_info_text}>
+                    {t("Dashboard Details")}
+                  </div>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Createdashboard

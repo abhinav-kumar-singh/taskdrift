@@ -3,6 +3,7 @@
   font-size: 32px;
   font-family: math;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 .landing_page_container {
@@ -216,7 +217,6 @@
   display: flex;
   height: fit-content;
   display: flex;
-  gap: 50px;
   margin: 25px;
 }
 
@@ -225,7 +225,6 @@
   background-color: rgb(var(--background-1));
   border-radius: 10px;
   box-shadow: var(--shadow-1);
-  transform: scale(1.2);
 }
 
 .product_description_container {
@@ -248,7 +247,6 @@
     color: rgb(var(--primary-color));
     background-color: rgb(var(--background-1));
     border-radius: 10px;
-    transform: scale(1.2);
   }
 }
 
@@ -356,4 +354,23 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.icon {
+  font-size: 24px;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.icon_hovered {
+  /* transform: scale(1.8) translateY(-30px); Enlarges the hovered icon */
+  transform: scale(1.5) translateY(-20px); /* Enlarges the hovered icon */
+}
+
+.icon_adjacent {
+  transform: scale(1.2) translateY(-10px); /* Slightly enlarges adjacent icons */
+}
+
+.icon:not(.icon_hovered):not(.icon_adjacent) {
+  transform: scale(1); /* Default size */
 }

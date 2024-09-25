@@ -21,13 +21,22 @@ const ProductInfoNavigation = (): JSX.Element => {
         <div
           onClick={handleBackToTop}
           className={styles.top_top}
-          id="back-to-top">
+          id="back-to-top"
+        >
           <NavigationIcon />
         </div>
         <div>Task Drift</div>
       </div>
       <div className={styles.connect_links}>
-        <div className={styles.link}>
+        <div
+          className={styles.link}
+          onClick={() => {
+            window.open(
+              "https://www.linkedin.com/in/abhinav-singh-602934267/",
+              "_blank"
+            );
+          }}
+        >
           <LinkedInIcon />
         </div>
         <div className={styles.link}>

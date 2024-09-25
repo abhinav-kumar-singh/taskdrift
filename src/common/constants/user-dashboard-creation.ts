@@ -10,113 +10,97 @@ const USER_BOARD_TAGS = [
     index: 1,
   },
   {
+    title: "Quality Assurance",
+    value: "quality assurance",
+    index: 2,
+  },
+  {
     title: "Fullstack",
     value: "fullstack",
-    index: 2,
+    index: 3,
   },
   {
     title: "Devops",
     value: "devops",
-    index: 3,
+    index: 4,
   },
   {
     title: "Design",
     value: "design",
-    index: 4,
+    index: 5,
   },
   {
     title: "Marketing",
     value: "marketing",
-    index: 5,
+    index: 6,
   },
   {
     title: "Product",
     value: "product",
-    index: 6,
+    index: 7,
   },
   {
     title: "Management",
     value: "management",
-    index: 7,
+    index: 8,
   },
   {
     title: "Sales",
     value: "sales",
-    index: 8,
+    index: 9,
   },
   {
     title: "Engineering",
     value: "engineering",
-    index: 9,
+    index: 10,
   },
   {
     title: "HR",
     value: "hr",
-    index: 10,
+    index: 11,
   },
   {
     title: "Legal",
     value: "legal",
-    index: 11,
+    index: 12,
   },
   {
     title: "Finance",
     value: "finance",
-    index: 12,
+    index: 13,
   },
   {
     title: "Admin",
     value: "admin",
-    index: 13,
+    index: 14,
   },
   {
     title: "Operations",
     value: "operations",
-    index: 14,
+    index: 15,
   },
   {
     title: "Customer Success",
     value: "customer success",
-    index: 15,
+    index: 16,
   },
   {
     title: "Customer Service",
     value: "customer service",
-    index: 16,
+    index: 17,
   },
   {
     title: "Other",
     value: "other",
-    index: 17,
+    index: 18,
   },
 ];
-
-// const USER_BOARD_TAGS = [
-//   "Frontend",
-//   "Backend",
-//   "Fullstack",
-//   "Devops",
-//   "Design",
-//   "Marketing",
-//   "Product",
-//   "Management",
-//   "Sales",
-//   "Engineering",
-//   "HR",
-//   "Legal",
-//   "Finance",
-//   "Admin",
-//   "Operations",
-//   "Customer Success",
-//   "Other",
-// ];
 
 const USER_TIME_TAGS = [
   { title: "Urgent", value: "urgent", index: 0 },
   { title: "High", value: "high", index: 1 },
   { title: "Medium", value: "medium", index: 2 },
   { title: "Low", value: "low", index: 3 },
-  { title: "None", value: "none", index: 4 },
 ];
 
 const USER_CONTEXT_TAGS = [

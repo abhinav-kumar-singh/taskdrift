@@ -48,20 +48,48 @@ const LPProductDescription = (): JSX.Element => {
     setListItemSelected(updatedItem || PRODUCT_DESCRIPTION_LIST[0]);
   };
 
+  const [hoverIndex, setHoverIndex] = useState<null | number>(null);
+
+  PRODUCT_DESCRIPTION_LIST.forEach((item, index) => {
+    const scrollButton = document.getElementById(`imageCaptureButton-${index}`);
+    const targetDiv = document.getElementById("targetImageToBringIntoView");
+
+    scrollButton?.addEventListener("click", () => {
+      targetDiv?.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    });
+  });
+
   return (
     <div className={styles.product_description_container}>
       <div className={styles.product_description_list}>
-        {PRODUCT_DESCRIPTION_LIST.map((item) => {
+        {PRODUCT_DESCRIPTION_LIST.map((item, index) => {
           return (
             <div
+              title={t(item.title)}
+              id={`imageCaptureButton-${index}`}
               className={`${styles.product_list_container} ${
                 listItemSelected.value === item.value
                   ? styles.list_item_selected
                   : ""
-              }`}
-              onClick={() => handleListItemClick(item)}>
+              }
+                ${styles.icon}  ${
+                hoverIndex !== null && index === hoverIndex
+                  ? styles.icon_hovered
+                  : hoverIndex !== null &&
+                    (index === hoverIndex - 1 || index === hoverIndex + 1)
+                  ? styles.icon_adjacent
+                  : ""
+              }
+              `}
+              onMouseEnter={() => setHoverIndex(index)}
+              onMouseLeave={() => setHoverIndex(null)}
+              onClick={() => handleListItemClick(item)}
+            >
               <item.icon />
-              <div>{t(item.title)}</div>
             </div>
           );
         })}
@@ -78,6 +106,7 @@ const LPProductDescription = (): JSX.Element => {
           />
         </div>
         <img
+          id="targetImageToBringIntoView"
           src={PRODUCT_DESCRIPTION_LIST_IMAGES[listItemSelected.index]}
           alt={`task drift app - ${listItemSelected?.title}`}
           className={styles.product_description_img}
